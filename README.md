@@ -1,3 +1,2 @@
-#oh my god
-am not stoping.
-and again
+#simple react app
+created using simple components
