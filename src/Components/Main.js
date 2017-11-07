@@ -12,7 +12,7 @@ class Main extends Component {
   render() {
     let desc = `React is a JavaScript library for building user interfaces, since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.
     Webpack is a module bundler for modern JavaScript applications. When webpack processes your application, it recursively builds a dependency graph that includes every module your application needs, then packages all of those modules into a small number of bundles - often only one - to be loaded by the browser.`;
-    console.log(desc);
+    // console.log(desc);
 
     return (
       <main>
