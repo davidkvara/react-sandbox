@@ -52,16 +52,16 @@ class Layout extends React.Component {
     return (
       <div className="niceapp">
         <Header>
-          <SiteName to="/" title="NiceSite" />
+          <SiteName to="/react-app" title="NiceSite" />
           <Nav see={this.state.toggle}>
-            <ListItem to="/" label="Home" />
+            <ListItem to="/react-app" label="Home" />
             <ListItem to="/about" label="About" />
             <ListItem to="/blog" label="Blog" />
           </Nav>
         </Header>
 
         <Main>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/react-app" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/blog" component={Blog} />
         </Main>
