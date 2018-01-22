@@ -8,7 +8,7 @@ class Header extends Component {
         <div className="wrapper hf">
           <div>
             <a className="home" href="">
-              EnergyFM
+              ol' News
             </a>
           </div>
           <ul className="menu">

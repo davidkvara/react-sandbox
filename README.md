@@ -1,1 +1,3 @@
-## skeleton app
+## React Sandbox
+
+Learning, testing, building

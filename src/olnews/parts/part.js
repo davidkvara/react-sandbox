@@ -1,13 +1,12 @@
 import React from "react";
 
-const Test = props => {
+const Aside = props => {
   return (
     <div
       className="pro"
       style={{
-        minHeight: "80px",
         background: "gainsboro",
-        padding: "10px",
+        padding: "1em",
         margin: "20px auto"
       }}
     >
@@ -16,4 +15,4 @@ const Test = props => {
   );
 };
 
-export default Test;
+export default Aside;

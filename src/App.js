@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import './App.css';
-import Header from "./Components/Header";
-import Greeting from "./Components/Greeting";
-import Main from "./Components/Main";
-import Footer from "./Components/Footer";
-
+import React, { Component } from "react";
+import "./olnews/App.css";
+import Header from "./olnews/Header";
+import Greeting from "./olnews/Greeting";
+import Main from "./olnews/Main";
+import Footer from "./olnews/Footer";
 
 class App extends Component {
   render() {
