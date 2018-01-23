@@ -1,0 +1,32 @@
+body {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  background: ghostwhite;
+}
+
+.calc-App {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1em;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 3px;
+  box-shadow: 0 0 10px #e2e2e2;
+}
+
+fieldset {
+  border: 1px solid lightgray;
+  margin-bottom: 10px;
+}
+
+.input {
+  padding: 4px 6px;
+  width: 154px;
+  border: 1px solid #ddd;
+}
+
+.input:focus {
+  border-color: #999;
+  outline: 0;
+}
