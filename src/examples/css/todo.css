@@ -1,0 +1,52 @@
+body {
+  padding: 40px 0 0;
+  background: #f4f5f7;
+  color: #555;
+}
+
+form input,
+form button {
+  padding: 4px 6px;
+}
+
+.shoping-app {
+  max-width: 700px;
+  padding: 1em 1.5em;
+  margin: 0 auto;
+  background: #fbfbfb;
+  box-shadow: 0 0 12px rgb(224, 224, 224);
+  border-radius: 3px;
+  color: #333;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.table {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.table,
+th,
+tr,
+td {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  width: 33.33%;
+  padding: 0.8em 1em;
+  border-bottom: 1px solid #d8d5d5;
+}
+
+.table tr td:nth-child(2) {
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+
+.caption {
+  color: #c03d3d;
+  font-size: 17px;
+  font-weight: 500;
+}
