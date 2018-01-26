@@ -27,6 +27,10 @@ class Board extends React.Component {
     this.setState({ squares: newSquares, xIsNext: !this.state.xIsNext });
   }
 
+  handleReset = () => {
+    this.setState({ squares: Array(9).fill(null) });
+  };
+
   renderSquare(i) {
     return (
       <Square
@@ -38,9 +42,12 @@ class Board extends React.Component {
 
   render() {
     const winner = haveWinner(this.state.squares);
+    const draw = this.state.squares.includes(null);
     let status;
     if (winner) {
       status = "Winner: " + winner;
+    } else if (!draw) {
+      status = "Draw";
     } else {
       status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     }
@@ -63,6 +70,11 @@ class Board extends React.Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
+        {(winner || !draw) && (
+          <p>
+            <button onClick={this.handleReset}>Start over</button>
+          </p>
+        )}
       </div>
     );
   }
