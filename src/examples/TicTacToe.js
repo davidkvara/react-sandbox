@@ -6,7 +6,6 @@ function Square(props) {
   let btnClass = classNames({
     square: true,
     "x-color": props.value === "X"
-    // "btn-over": !this.state.isPressed && this.state.isHovered
   });
   return (
     <button className={btnClass} onClick={props.onSquareClick}>
@@ -43,8 +42,8 @@ class Board extends React.Component {
   render() {
     const winner = haveWinner(this.state.squares);
     const draw = this.state.squares.every(x => x);
-    // const draw = this.state.squares.includes(null);
     let status;
+
     if (winner) {
       status = "Winner: " + winner;
     } else if (draw) {
@@ -55,7 +54,7 @@ class Board extends React.Component {
 
     return (
       <div className="board">
-        <h2>{status}</h2>
+        <h2 className="status">{status}</h2>
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
