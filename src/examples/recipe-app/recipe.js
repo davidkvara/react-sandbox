@@ -1,20 +1,17 @@
 import React from "react";
+import IngredientsList from "./IngredientsList";
+import Instructions from "./Instructions";
 
 const Recipe = ({ name, ingredients, steps }) => {
   return (
-    <div
+    <section
       className="recipe"
       style={{ borderBottom: "2px double orange", marginBottom: 10 }}
     >
       <h3>{name}</h3>
-      <ul>
-        {ingredients.map(ingredient => (
-          <li key={ingredient}>{ingredient.name}</li>
-        ))}
-      </ul>
-      <h4>Cooking Steps</h4>
-      {steps.map((step, i) => <p key={i}>{step}</p>)}
-    </div>
+      <IngredientsList list={ingredients} />
+      <Instructions title="Cooking Steps" steps={steps} />
+    </section>
   );
 };
 
