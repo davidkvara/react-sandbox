@@ -22,6 +22,13 @@ const carsData = [
       { year: 2012, model: "H", price: 12500 },
       { year: 2017, model: "M", price: 80000 }
     ]
+  },
+  {
+    name: "Sports Cars",
+    collection: [
+      { year: 2014, model: "sls", price: 120000 },
+      { year: 2016, model: "AMG", price: 150000 }
+    ]
   }
 ];
 
