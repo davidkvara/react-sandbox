@@ -1,7 +1,7 @@
 import React from "react";
 import TransportTable from "./TransportTable";
 
-class ProductTable extends React.Component {
+class ProductList extends React.Component {
   render() {
     const { selectedValue, newOnly, products } = this.props;
 
@@ -23,13 +23,13 @@ class ProductTable extends React.Component {
 
     return (
       <div className="prod-list">
-        {filteredData.map((car, i) => <ProductsList key={i} {...car} />)}
+        {filteredData.map((car, i) => <ProductSection key={i} {...car} />)}
       </div>
     );
   }
 }
 
-const ProductsList = ({ name, collection }) => {
+const ProductSection = ({ name, collection }) => {
   return (
     <div className="list">
       <h3>{name}</h3>
@@ -38,4 +38,4 @@ const ProductsList = ({ name, collection }) => {
   );
 };
 
-export default ProductTable;
+export default ProductList;

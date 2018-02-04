@@ -10,7 +10,9 @@ class ProductsFilter extends React.Component {
   };
 
   render() {
-    const { title, options, value, checked } = this.props;
+    const { title, data, value, checked } = this.props;
+    const options = data.map(tr => tr.name);
+
     return (
       <div className="filter-data">
         <h3>{title}</h3>

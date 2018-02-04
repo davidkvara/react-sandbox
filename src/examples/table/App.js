@@ -1,11 +1,10 @@
 import React from "react";
 import ProductsFilter from "./ProductsFilter";
-import ProductTable from "./ProductTable";
+import ProductList from "./ProductList";
 import "./main.css";
 
 class App extends React.Component {
   state = {
-    carTypes: this.props.transport.map(tr => tr.name),
     value: "All",
     newOnly: false
   };
@@ -20,7 +19,7 @@ class App extends React.Component {
 
   render() {
     const { title, transport } = this.props;
-    const { carTypes, newOnly, value } = this.state;
+    const { newOnly, value } = this.state;
 
     return (
       <div className="market container">
@@ -28,13 +27,13 @@ class App extends React.Component {
         <p style={{ fontSize: "large" }}>Best place to buy vehicles online</p>
         <ProductsFilter
           title="Choose Options"
-          options={carTypes}
+          data={transport}
           value={value}
           checked={newOnly}
           onSelectionChange={this.handleOptionChange}
           onCheckBoxChange={this.handleCheckChange}
         />
-        <ProductTable
+        <ProductList
           products={transport}
           selectedValue={value}
           newOnly={newOnly}
