@@ -5,13 +5,17 @@
 body {
   margin: 0;
   font-family: "Segoe Ui", sans-serif;
-  color: #454545;
+  color: #545454;
   background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: cadetblue;
 }
 
 h1,
@@ -24,4 +28,11 @@ h4 {
 ul {
   padding-left: 0;
   list-style-position: inside;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 1.5;
 }
