@@ -1,0 +1,52 @@
+.grid-container {
+  padding: 1em 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-gap: 1em;
+}
+
+.item {
+  padding: 14px 14px;
+  background: slategray;
+  color: #eee;
+  border-radius: 3px;
+  cursor: default;
+  /* max-width: 160px; */
+  font-size: 18px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.item:hover {
+  opacity: 0.9;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: 300ms ease-in;
+}
+
+.example-appear {
+  opacity: 0.01;
+  /* transform: translateY(20px);*/
+  transform: translateY(16px) scale(0.99);
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+}

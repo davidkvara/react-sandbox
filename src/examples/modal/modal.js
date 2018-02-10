@@ -7,7 +7,7 @@ const Overlay = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  background: #fff;
+  background: rgba(0, 0, 0, 0.25);
 `;
 
 const Message = styled.div`
@@ -17,11 +17,10 @@ const Message = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #ddd;
+  background: #f6f6f6;
   border-radius: 3px;
-  padding: 1em;
-  /* box-shadow: 0 -2px 8px #eee; */
-  border-bottom: 2px solid slateblue;
+  padding: 1.2em 2em 2em;
+  border-left: 9px solid slateblue;
 `;
 
 const CloseBtn = styled.button`
@@ -42,9 +41,6 @@ const CloseBtn = styled.button`
 `;
 
 const Modal = props => {
-  if (!props.show) {
-    return "";
-  }
   return (
     <Overlay>
       <Message>

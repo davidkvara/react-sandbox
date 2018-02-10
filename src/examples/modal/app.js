@@ -1,5 +1,8 @@
+// @flow
 import React from "react";
 import Modal from "./modal";
+import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import "./modal.css";
 
 class App extends React.Component {
   state = { isOpen: false };
@@ -14,7 +17,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <h3>
           Quidem ullam reprehenderit sint culpa facere cum labore, ipsum minima.
         </h3>
@@ -24,10 +27,15 @@ class App extends React.Component {
         </h3>
 
         <button onClick={this.handleModOpen}>show modal</button>
-
-        <Modal show={this.state.isOpen} onClose={this.handleModClose}>
-          Hello to you!
-        </Modal>
+        <ReactCSSTransitionGroup
+          transitionName="modal"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+        >
+          {this.state.isOpen && (
+            <Modal onClose={this.handleModClose}>Hello Dave!</Modal>
+          )}
+        </ReactCSSTransitionGroup>
       </div>
     );
   }
