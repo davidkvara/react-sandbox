@@ -55,8 +55,8 @@ td {
   border-collapse: collapse;
 }
 
-td,
-th {
+.tbl td,
+.tbl th {
   width: 33.33%;
   padding: 0.8em 1em;
   text-align: center;

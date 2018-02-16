@@ -2,7 +2,7 @@ import React from "react";
 
 const TransportTable = ({ year, model, price }) => {
   return (
-    <table>
+    <table className="tabl">
       <thead>
         <tr>
           <th>Year</th>

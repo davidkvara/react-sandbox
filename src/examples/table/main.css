@@ -1,37 +1,30 @@
-body {
-  font-family: "Segoe Ui", sans-serif;
-  color: #333;
-}
-
-table {
+.tabl {
   margin: 26px 0;
   width: 100%;
 }
 
-table,
+.tabl,
 td,
 th {
   border: 1px solid #c5c5c5;
   border-collapse: collapse;
 }
 
-td {
+.tabl td {
   padding: 0.8em 1em;
   text-align: left;
   width: 25%;
 }
 
-th {
+.tabl th {
   padding: 0.4em 1em;
   text-align: left;
   background: #dedede;
 }
 
-.container,
 .header-cat {
   max-width: 940px;
   margin: auto;
-  padding: 1em;
 }
 
 .select-opt {
