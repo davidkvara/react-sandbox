@@ -1,12 +1,34 @@
-body {
+/* body {
   padding: 40px 0 0;
   background: #e6e6e6;
   color: #555;
+} */
+
+.todo-title {
+  margin-bottom: 30px;
+  font-weight: 400;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-form input,
-form button {
-  padding: 4px 6px;
+.inp {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+.sub {
+  background: #e9ecef;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 0.5rem 0.8rem 0.5rem 0.7rem;
+  user-select: none;
+  border-right: 0;
+  border-radius: 0 0.25rem 0.25rem 0;
+  color: rgb(108, 108, 109);
+}
+
+.inp:focus {
+  background-color: #fff;
+  border-color: #969696;
+  outline: 0;
 }
 
 .shoping-app {
@@ -21,12 +43,12 @@ form button {
   text-align: center;
 }
 
-.table {
+.tbl {
   width: 100%;
   margin: 20px 0;
 }
 
-.table,
+.tbl,
 th,
 tr,
 td {
@@ -37,16 +59,30 @@ td,
 th {
   width: 33.33%;
   padding: 0.8em 1em;
-  border-bottom: 1px solid #d8d5d5;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
 }
 
-.table tr td:nth-child(2) {
+.tbl tr td:nth-child(2) {
   border-left: 1px solid #ddd;
   border-right: 1px solid #ddd;
 }
 
 .caption {
-  color: #c03d3d;
+  color: #323232;
   font-size: 17px;
+  text-align: center;
   font-weight: 500;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.tbl caption::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  border-top: 1px solid #a4a4a4;
 }

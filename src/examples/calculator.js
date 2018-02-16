@@ -1,25 +1,30 @@
 // Temperature converter. Lifting state up example. More at: https://reactjs.org/docs/lifting-state-up.html
 import React from "react";
-// import styled from "styled-components";
 import "./css/calculator.css";
+import classNames from "classnames";
+
+const Header = props => {
+  let goodClass = classNames({ "h-verdict": true, good: props.good });
+  return <h4 className={goodClass}>{props.children}</h4>;
+};
 
 function BoilingVerdict(props) {
   if (props.celsius >= 100) {
     return (
-      <p>
+      <Header good={true}>
         The water <b>would</b> boil
-      </p>
+      </Header>
     );
   }
   return (
-    <p>
+    <Header good={false}>
       The water <b>would not</b> boil
-    </p>
+    </Header>
   );
 }
 
 const scaleName = {
-  c: "Celius",
+  c: "Celsius",
   f: "Fahrenheit"
 };
 
@@ -45,7 +50,7 @@ class TemperatureInput extends React.Component {
     const { temperature, scale } = this.props;
     return (
       <fieldset>
-        <legend>Enter name in {scaleName[scale]}:</legend>
+        <legend>Enter temperature in {scaleName[scale]}:</legend>
         <input
           type="text"
           value={temperature}

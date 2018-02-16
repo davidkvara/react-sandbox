@@ -38,7 +38,7 @@ const Header = () => {
               About
             </ListItem>
             <ListItem eventKey={2} to="/examples">
-              examples
+              Examples
             </ListItem>
           </Nav>
           <Nav pullRight>

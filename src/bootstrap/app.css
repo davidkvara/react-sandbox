@@ -1,5 +1,26 @@
 .hero-container {
   padding: 60px 0 80px;
   background: #f4f4f4;
-  text-align: center;
+}
+
+.box {
+  background: whitesmoke;
+  border: 2px solid gold;
+  padding: 1em;
+  margin-top: 14px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.about-app,
+.example-page {
+  padding-bottom: 2em;
+}
+
+.h-verdict {
+  margin-top: 22px;
+  font-size: 18px;
+}
+.h-verdict.good {
+  color: #4caf50;
 }

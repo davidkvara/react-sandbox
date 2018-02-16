@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 export default () => (
-  <div className="hero-container">
+  <div className="hero-container text-center">
     <div className="container">
       <h2>Welcome to my react.js playground</h2>
       <p style={{ fontSize: "large" }}>
