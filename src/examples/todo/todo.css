@@ -1,7 +1,6 @@
 body {
-  margin: 0;
   padding: 2em;
-  background: #fafafa;
+  background: #f9f9f9;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #334554;
 }
@@ -15,12 +14,11 @@ ul {
 .todo {
   max-width: 370px;
   width: 100%;
-  margin: auto;
+  margin: 0 auto;
   border-radius: 3px;
-  background: #fbfbfb;
-  box-shadow: 1px 1px 1px #eee, -1px -1px 1px #eee, -1px 1px 1px #eee,
-    1px -1px 1px #eee;
-  border: 1px solid #ddd;
+  background: #fff;
+  box-shadow: 0 1px 1px rgba(27, 31, 35, 0.1);
+  border: 1px solid #e1e4e8;
   overflow: hidden;
 }
 
@@ -31,33 +29,8 @@ ul {
   text-align: center;
   margin: 0;
   font-family: "Roboto", sans-serif;
-  color: rgb(138, 73, 151);
+  color: #934ba1;
   font-size: 42px;
-}
-
-.todo-item {
-  width: 100%;
-  padding: 1em 1em 1em 0.8em;
-  list-style: none;
-  font-size: 18px;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  border-top: 1px solid #e4e4e4;
-  color: #644972;
-  user-select: none;
-}
-
-input[type="checkbox"] {
-  margin-right: 10px;
-  width: 13px;
-  height: 13px;
-  border: 1px solid #eee;
-  background: tomato;
-  border-radius: 50%;
-}
-
-label {
-  cursor: pointer;
 }
 
 .input {
@@ -65,19 +38,55 @@ label {
   padding: 18px 20px;
   font-size: 18px;
   border: 0;
-  letter-spacing: 1px;
-  color: #cecece;
+  letter-spacing: 0.6px;
+  font-family: inherit;
+  font-weight: 300;
+  color: #834091;
 }
 
 ::-webkit-input-placeholder {
   color: #e6e6e6;
 }
 
-form {
-  position: relative;
-}
-
 .input:focus {
   outline: 0;
-  color: #474167;
+  outline: 2px solid #da9ae7;
+}
+
+.todo-item {
+  width: 100%;
+  list-style: none;
+  padding: 0 1em;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  border-top: 1px solid #e4e4e4;
+  color: #503c5a;
+  user-select: none;
+  display: flex;
+  align-items: center;
+}
+
+.todo-item label {
+  padding: 1em 0 1em;
+  flex: 1;
+  cursor: pointer;
+}
+.todo-item label > input[type="checkbox"] {
+  margin-right: 10px;
+}
+.todo-item label > input[type="checkbox"]:checked ~ span {
+  text-decoration: line-through;
+  font-style: italic;
+  opacity: 0.4;
+}
+
+.dlt {
+  color: #f64242;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 25px;
+  background: none;
+  border: 0;
+  transition: 0.3s;
 }

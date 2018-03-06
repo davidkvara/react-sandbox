@@ -5,11 +5,10 @@ class Todo extends React.Component {
   state = {
     value: "",
     todos: [
-      { item: "sleep tight", completed: true },
-      { item: "write code", completed: false },
-      { item: "don't stop", completed: true }
-    ],
-    visibilityFilter: "SHOW_ALL"
+      { text: "sleep tight", completed: true },
+      { text: "write code", completed: false },
+      { text: "don't stop", completed: true }
+    ]
   };
 
   handleChange = e => {
@@ -18,7 +17,12 @@ class Todo extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const newItem = { item: this.state.value, completed: false };
+    const todoKeys = this.state.todos.map(todo => todo.text);
+    const alreadyExist = todoKeys.includes(this.state.value);
+    if (!this.state.value || alreadyExist) {
+      return;
+    }
+    const newItem = { text: this.state.value, completed: false };
     this.setState({ todos: this.state.todos.concat(newItem), value: "" });
   };
 
@@ -26,7 +30,7 @@ class Todo extends React.Component {
     const newTodos = this.state.todos.map((todo, index) => {
       if (index === i) {
         return {
-          item: todo.item,
+          text: todo.text,
           completed: !todo.completed
         };
       }
@@ -34,16 +38,11 @@ class Todo extends React.Component {
     });
     this.setState({ todos: newTodos });
   };
-  /*
-  showComplete = () => {
-    const completed = this.state.todos.filter(todo => todo.completed);
-    this.setState({ todos: completed });
-  };
 
-  showActive = () => {
-    const active = this.state.todos.filter(todo => !todo.completed);
-    this.setState({ todos: active });
-  };*/
+  handleDelete = it => {
+    const newTodos = this.state.todos.filter(todo => todo.text !== it.text);
+    this.setState({ todos: newTodos });
+  };
 
   render() {
     return (
@@ -54,48 +53,30 @@ class Todo extends React.Component {
             type="text"
             onChange={this.handleChange}
             value={this.state.value}
-            placeholder="enter todo"
+            placeholder="enter todo here"
             className="input"
           />
           <span className="focus-border" />
         </form>
         <ul>
           {this.state.todos.map((todo, i) => {
-            if (todo.completed) {
-              return (
-                <li key={todo.item + i} className="todo-item">
-                  <strike>
-                    <label>
-                      <input
-                        type="checkbox"
-                        onChange={() => this.handleToggleCheck(i)}
-                        checked={todo.completed}
-                      />{" "}
-                      {todo.item}
-                    </label>
-                  </strike>
-                </li>
-              );
-            }
             return (
-              <li key={todo.item + i} className="todo-item">
+              <li key={todo.text} className="todo-item">
                 <label>
                   <input
                     type="checkbox"
                     onChange={() => this.handleToggleCheck(i)}
                     checked={todo.completed}
                   />{" "}
-                  {todo.item}
+                  <span>{todo.text}</span>
                 </label>
+                <button className="dlt" onClick={() => this.handleDelete(todo)}>
+                  &times;
+                </button>
               </li>
             );
           })}
         </ul>
-        {/* <div>
-          <button onClick={this.showComplete}>completed</button>
-          <button onClick={this.showActive}>active</button>
-          <button onClick={this.showAll}>all</button>
-        </div> */}
       </div>
     );
   }
