@@ -9,6 +9,9 @@
 # production
 /build
 
+# editor specific
+.vscode
+
 # misc
 .env.local
 .env.development.local

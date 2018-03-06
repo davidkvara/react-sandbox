@@ -1,4 +1,3 @@
-// @flow
 import React from "react";
 import Modal from "./modal";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";

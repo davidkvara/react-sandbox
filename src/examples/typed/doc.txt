@@ -1,0 +1,4 @@
+Learn how to type React class components and stateless functional components with Flow
+
+source:
+https://flow.org/en/docs/react/components/
