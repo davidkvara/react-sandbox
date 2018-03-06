@@ -1,0 +1,36 @@
+.demo {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1em 1.2em;
+  line-height: 1.4;
+}
+
+.article {
+  background: #fff;
+  padding: 20px 30px;
+  border: 2px dotted #b4a5c9;
+  background-clip: padding-box;
+  border-radius: 4px;
+  margin: 0 0 20px;
+  list-style: none;
+  opacity: 0.9;
+}
+
+.article > h3 {
+  margin-top: 0;
+  font-size: 1.4em;
+  margin-bottom: 16px;
+}
+
+.article > p {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.article > p > span {
+  font-weight: bold;
+  color: slategrey;
+  border-bottom: 1px solid rgb(147, 147, 160);
+}
