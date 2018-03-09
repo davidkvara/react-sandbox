@@ -13,7 +13,7 @@ body,
 body {
   font-family: "Segoe Ui", sans-serif;
   color: #343434;
-  background-color: #f9f9f9;
+  background-color: whitesmoke;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
