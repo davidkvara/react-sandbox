@@ -30,6 +30,7 @@ class App extends React.Component {
           transitionName="modal"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}
+          component="div"
         >
           {this.state.isOpen && (
             <Modal onClose={this.handleModClose}>Hello Dave!</Modal>

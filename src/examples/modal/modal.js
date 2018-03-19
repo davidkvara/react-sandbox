@@ -7,20 +7,10 @@ const Overlay = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  background: rgba(0, 0, 0, 0.25);
-`;
-
-const Message = styled.div`
-  width: 100%;
-  max-width: 600px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #f6f6f6;
-  border-radius: 3px;
-  padding: 1.2em 2em 2em;
-  border-left: 9px solid slateblue;
+  background: rgba(255, 255, 255, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const CloseBtn = styled.button`
@@ -32,25 +22,64 @@ const CloseBtn = styled.button`
   color: gray;
   font-size: 24px;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.3s;
 
   &:hover,
   &:focus {
     color: #555;
   }
 `;
+const Group = styled.div`
+  margin: 20px 0 0;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const Ghili = styled.button`
+  background: #02b3e4;
+  box-shadow: 8px 10px 20px 0 rgba(46, 61, 73, 0.2);
+  color: #fff;
+  border: 0;
+  padding: 4px 20px;
+  letter-spacing: 0;
+  font-size: 0.875rem;
+  text-transform: capitalize;
+  font-family: sans-serif;
+  height: 2.25rem;
+  font-weight: 400;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  line-height: 0.9rem;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+  user-select: none;
+
+  &:hover {
+    box-shadow: 2px 4px 8px 0 rgba(46, 61, 73, 0.3);
+  }
+  &:focus {
+    outline: 3px solid gold;
+  }
+`;
+
+const Title = styled.h2`
+  font-size: 24px;
+  font-weight: 300;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+`;
 
 const Modal = props => {
   return (
     <Overlay>
-      <Message>
+      <div className="message">
         <CloseBtn onClick={props.onClose}>&times;</CloseBtn>
-        <h3 style={{ marginTop: 0 }} className="title">
-          {props.children}
-        </h3>
+        <Title>{props.children}</Title>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quos
         totam tempore, sit cumque eveniet odit?
-      </Message>
+        <Group>
+          <Ghili>Agree</Ghili> <Ghili>cancel</Ghili>
+        </Group>
+      </div>
     </Overlay>
   );
 };
