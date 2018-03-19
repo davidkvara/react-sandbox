@@ -1,6 +1,6 @@
 import React from "react";
 import "./custom.css";
-import UserDisplay from "./tweetComponents";
+import UserDisplay from "./tweetUserData";
 import TweetIcons from "./tweetIcons";
 import TweetData from "./tweetdata";
 

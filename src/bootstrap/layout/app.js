@@ -1,3 +1,5 @@
+// to make this app work you should wrap <Layout /> in BrowserRouter (at index.js)
+
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Header from "../components/header";
@@ -24,7 +26,7 @@ const Layout = props => {
 const NoMatch = () => (
   <div className="hero-container text-center">
     <div className="container">
-      <p>404 | Page not found</p>
+      <h3>404 | Page not found</h3>
     </div>
   </div>
 );

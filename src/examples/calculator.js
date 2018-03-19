@@ -55,7 +55,7 @@ class TemperatureInput extends React.Component {
           type="text"
           value={temperature}
           onChange={this.handleChange}
-          className="input"
+          className="calc-input"
         />
       </fieldset>
     );
