@@ -1,8 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./examples/modal/app";
-// import { BrowserRouter as Router } from "react-router-dom";
-// import App from "./bootstrap/layout/app";
+import { createStore } from "redux";
+import { reducer } from "./reduxTodo/TodoList";
+import App from "./reduxTodo/App";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+// example from http://www.react.express/react_redux
+
+const store = createStore(reducer);
+
+// Pass the store into the app container
+ReactDOM.render(<App store={store} />, document.querySelector("#root"));
