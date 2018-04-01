@@ -14,8 +14,8 @@ class SayHello extends React.Component {
       <div style={{ height: "100%" }}>
         <She
           render={({ x, y }) => (
-            <h1>
-              The mouse position is ({x}, {y})
+            <h1 style={styles.circle}>
+              x: {x}, y: {y}
             </h1>
           )}
         />
@@ -23,5 +23,24 @@ class SayHello extends React.Component {
     );
   }
 }
+
+const styles = {
+  circle: {
+    width: 300,
+    height: 300,
+    borderRadius: "50%",
+    background: "lightyellow",
+    position: "fixed",
+    top: "calc(50% - 150px)",
+    left: "calc(50% - 150px)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    opacity: 0.9,
+    border: "2px solid gold",
+    boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+    fontWeight: 400
+  }
+};
 
 export default SayHello;
