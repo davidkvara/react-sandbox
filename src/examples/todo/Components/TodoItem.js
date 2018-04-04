@@ -4,16 +4,18 @@ export default function TodoList(props) {
   return (
     <li className="todo-item">
       <label>
-        <input
-          type="checkbox"
-          onChange={props.onChange}
-          checked={props.checked}
-        />{" "}
+        <Checkbox onChange={props.onChange} checked={props.checked} />{" "}
         <span>{props.text}</span>
       </label>
-      <button className="dlt" onClick={props.onClick}>
-        &times;
-      </button>
+      <CloseButton onClick={props.onClick}>&times;</CloseButton>
     </li>
   );
+}
+
+function Checkbox(props) {
+  return <input type="checkbox" {...props} />;
+}
+
+function CloseButton(props) {
+  return <button className="dlt" {...props} />;
 }
