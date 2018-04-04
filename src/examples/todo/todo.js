@@ -1,5 +1,7 @@
 import React from "react";
 import "./todo.css";
+import Input from "./Components/Input";
+import TodoItem from "./Components/TodoItem";
 
 class Todo extends React.Component {
   state = {
@@ -16,14 +18,19 @@ class Todo extends React.Component {
   };
 
   handleSubmit = e => {
-    e.preventDefault();
-    const todoKeys = this.state.todos.map(todo => todo.text);
-    const alreadyExist = todoKeys.includes(this.state.value);
-    if (!this.state.value || alreadyExist) {
-      return;
+    // e.preventDefault();
+    if (e.key === "Enter") {
+      const todoKeys = this.state.todos.map(todo => todo.text);
+      const alreadyExist = todoKeys.includes(this.state.value);
+      if (!this.state.value || alreadyExist) {
+        return;
+      }
+      const newItem = { text: this.state.value, completed: false };
+      this.setState({
+        todos: this.state.todos.concat(newItem),
+        value: ""
+      });
     }
-    const newItem = { text: this.state.value, completed: false };
-    this.setState({ todos: this.state.todos.concat(newItem), value: "" });
   };
 
   handleToggleCheck = i => {
@@ -48,32 +55,23 @@ class Todo extends React.Component {
     return (
       <div className="todo">
         <h1 className="td-title">todos</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            onChange={this.handleChange}
-            value={this.state.value}
-            placeholder="enter todo here"
-            className="input"
-          />
-          <span className="focus-border" />
-        </form>
+        <Input
+          onChange={this.handleChange}
+          value={this.state.value}
+          placeholder="enter todo here"
+          className="input"
+          onKeyPress={this.handleSubmit}
+        />
         <ul>
           {this.state.todos.map((todo, i) => {
             return (
-              <li key={todo.text} className="todo-item">
-                <label>
-                  <input
-                    type="checkbox"
-                    onChange={() => this.handleToggleCheck(i)}
-                    checked={todo.completed}
-                  />{" "}
-                  <span>{todo.text}</span>
-                </label>
-                <button className="dlt" onClick={() => this.handleDelete(todo)}>
-                  &times;
-                </button>
-              </li>
+              <TodoItem
+                key={i}
+                onChange={() => this.handleToggleCheck(i)}
+                text={todo.text}
+                checked={todo.completed}
+                onClick={() => this.handleDelete(todo)}
+              />
             );
           })}
         </ul>
