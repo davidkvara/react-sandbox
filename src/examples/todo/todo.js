@@ -33,9 +33,9 @@ class Todo extends React.Component {
     }
   };
 
-  handleToggleCheck = i => {
-    const newTodos = this.state.todos.map((todo, index) => {
-      if (index === i) {
+  handleToggleCheck = text => {
+    const newTodos = this.state.todos.map(todo => {
+      if (todo.text === text) {
         return {
           text: todo.text,
           completed: !todo.completed
@@ -46,8 +46,8 @@ class Todo extends React.Component {
     this.setState({ todos: newTodos });
   };
 
-  handleDelete = it => {
-    const newTodos = this.state.todos.filter(todo => todo.text !== it.text);
+  handleDelete = text => {
+    const newTodos = this.state.todos.filter(todo => todo.text !== text);
     this.setState({ todos: newTodos });
   };
 
@@ -63,14 +63,13 @@ class Todo extends React.Component {
           onKeyPress={this.handleSubmit}
         />
         <ul>
-          {this.state.todos.map((todo, i) => {
+          {this.state.todos.map(todo => {
             return (
               <TodoItem
-                key={i}
-                onChange={() => this.handleToggleCheck(i)}
-                text={todo.text}
-                checked={todo.completed}
-                onClick={() => this.handleDelete(todo)}
+                key={todo.text}
+                onChange={() => this.handleToggleCheck(todo.text)}
+                onClick={() => this.handleDelete(todo.text)}
+                {...todo}
               />
             );
           })}
