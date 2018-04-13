@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Recipe from "./recipe";
 
 const App = ({ title, recipes }) => {
@@ -12,6 +13,11 @@ const App = ({ title, recipes }) => {
       </div>
     </div>
   );
+};
+
+App.propTypes = {
+  title: PropTypes.string.isrequired,
+  recipes: PropTypes.array.isRequired
 };
 
 export default App;
