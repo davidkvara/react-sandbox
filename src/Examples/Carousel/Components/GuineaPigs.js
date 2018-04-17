@@ -9,7 +9,7 @@ const sliderStyles = {
 
 const GuineaPigs = props => (
   <div style={sliderStyles}>
-    <h1>Cute Guinea Pigs</h1>
+    <h2>Cute Guinea Pigs</h2>
     <img src={props.src} alt="" />
   </div>
 );

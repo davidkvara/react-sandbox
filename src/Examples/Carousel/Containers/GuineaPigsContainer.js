@@ -13,7 +13,8 @@ class GuineaPigsContainer extends React.Component {
 
   nextGP = () => {
     let current = this.state.currentGP;
-    let next = ++current % GUINEAPATHS.length;
+    const next = (current += 1 % GUINEAPATHS.length);
+
     this.setState({ currentGP: next });
   };
 
