@@ -1,26 +1,12 @@
 // Temperature converter. Lifting state up example. More at: https://reactjs.org/docs/lifting-state-up.html
 import React from "react";
 import "./css/calculator.css";
-import classNames from "classnames";
-
-const Header = props => {
-  let goodClass = classNames({ "h-verdict": true, good: props.good });
-  return <h4 className={goodClass}>{props.children}</h4>;
-};
 
 function BoilingVerdict(props) {
-  if (props.celsius >= 100) {
-    return (
-      <Header good={true}>
-        The water <b>would</b> boil
-      </Header>
-    );
-  }
-  return (
-    <Header good={false}>
-      The water <b>would not</b> boil
-    </Header>
-  );
+  const boilResult =
+    props.celsius >= 100 ? <b className="success">would</b> : <b>would not</b>;
+
+  return <p>The water {boilResult} boil.</p>;
 }
 
 const scaleName = {
