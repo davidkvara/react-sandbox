@@ -1,29 +1,17 @@
 import React from "react";
-import { connect } from "react-redux";
 
-class App extends React.Component {
-  clickCountUp = () => {
-    this.props.dispatch({ type: "DEC_COUNT", by: 1 });
-  };
+const App = props => {
+  return (
+    <div style={props.layout}>
+      <h1>Hello, Again</h1>
+      <p>
+        Accusamus facere libero, molestiae rem odit inventore est temporibus
+        aliquid sunt quod voluptatem voluptas dignissimos, beatae possimus
+        reprehenderit amet aspernatur molestias at assumenda expedita hic.
+        Error, nemo hic voluptatem sunt totam amet eos!
+      </p>
+    </div>
+  );
+};
 
-  clickCountDown = () => {
-    this.props.dispatch({ type: "INC_COUNT", by: 1 });
-  };
-
-  render() {
-    // console.log(this.props);
-    return (
-      <div>
-        <h2>{this.props.count}</h2>
-        <button onClick={this.clickCountDown}>Dec Count</button>
-        <button onClick={this.clickCountUp}>Inc Count</button>
-      </div>
-    );
-  }
-}
-
-function mapStateToProps(state) {
-  return { count: state.count };
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

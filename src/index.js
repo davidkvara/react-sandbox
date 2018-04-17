@@ -1,6 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./PureComponent/funstate";
+// import "./normalize.css";
+import App from "./App";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const styles = {
+  container: {
+    maxWidth: 800,
+    margin: "0 auto",
+    padding: "0 1em",
+    lineHeight: 1.5,
+    fontFamily: "segoe ui, sans-serif"
+  }
+};
+
+ReactDOM.render(
+  <App layout={styles.container} />,
+  document.getElementById("root")
+);
