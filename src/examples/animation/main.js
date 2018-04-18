@@ -1,7 +1,7 @@
 // more at :: https://reactjs.org/docs/animation.html
 import React from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
-import "./some.css";
+import "./css/some.css";
 
 class TodoList extends React.Component {
   state = { items: ["hello", "world", "click", "me"], value: "" };
@@ -21,15 +21,14 @@ class TodoList extends React.Component {
   render() {
     return (
       <div className="container">
-        <form onSubmit={this.handleAdd}>
-          <input
-            type="text"
-            style={{ padding: "4px 6px" }}
-            value={this.state.value}
-            placeholder="add item"
-            onChange={e => this.setState({ value: e.target.value })}
-          />
-        </form>
+        <Input
+          onSubmit={this.handleAdd}
+          type="text"
+          style={{ padding: "4px 6px" }}
+          value={this.state.value}
+          placeholder="add item"
+          onChange={e => this.setState({ value: e.target.value })}
+        />
         <ReactCSSTransitionGroup
           className="grid-container"
           transitionName="example"
@@ -49,6 +48,15 @@ class TodoList extends React.Component {
       </div>
     );
   }
+}
+
+function Input({ onSubmit, ...rest }) {
+  return (
+    <form onSubmit={onSubmit}>
+      {" "}
+      <input {...rest} />
+    </form>
+  );
 }
 
 export default TodoList;
