@@ -37,7 +37,7 @@ class Todo extends React.Component {
     const newTodos = this.state.todos.map(todo => {
       if (todo.text === text) {
         return {
-          text: todo.text,
+          ...todo,
           completed: !todo.completed
         };
       }
