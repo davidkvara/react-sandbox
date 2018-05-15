@@ -6,10 +6,10 @@ import { linkTo } from "@storybook/addon-links";
 
 import { Button, Welcome } from "@storybook/react/demo";
 // ჩემი კომპონენტები
-import Tweet from "../examples/tweet/app";
-import Calculator from "../examples/calculator";
-import Game from "../examples/TicTacToe";
-import Todo from "../examples/todo/todo";
+import Tweet from "../Examples/tweet/app";
+import Calculator from "../Examples/calculator";
+import Game from "../Examples/TicTacToe";
+import Todo from "../Examples/todo/todo";
 
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
