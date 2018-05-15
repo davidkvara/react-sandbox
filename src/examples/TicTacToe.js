@@ -1,14 +1,10 @@
 import React from "react";
 import "./css/tictactoe.css";
-import classNames from "classnames";
 
 function Square(props) {
-  let btnClass = classNames({
-    square: true,
-    "x-color": props.value === "X"
-  });
+  const helper = props.value === "X" ? " x-color" : "";
   return (
-    <button className={btnClass} onClick={props.onSquareClick}>
+    <button className={"square" + helper} onClick={props.onSquareClick}>
       {props.value}
     </button>
   );
