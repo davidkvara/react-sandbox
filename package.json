@@ -3,27 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^3.3.7",
-    "classnames": "^2.2.5",
-    "gh-pages": "^1.1.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
-    "react-bootstrap": "^0.32.1",
     "react-dom": "^16.2.0",
-    "react-loadable": "^5.3.1",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.0",
     "redux": "^3.7.2",
     "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.79.1",
+    "semantic-ui-react": "^0.80.0",
     "styled-components": "^3.1.6"
   },
   "scripts": {
     "flow": "flow",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
@@ -33,10 +26,10 @@
   },
   "devDependencies": {
     "flow-bin": "^0.65.0",
-    "@storybook/react": "^3.3.15",
-    "@storybook/addon-actions": "^3.3.15",
-    "@storybook/addon-links": "^3.3.15",
-    "@storybook/addons": "^3.3.15",
+    "@storybook/react": "^3.4.4",
+    "@storybook/addon-actions": "^3.4.4",
+    "@storybook/addon-links": "^3.4.4",
+    "@storybook/addons": "^3.4.4",
     "babel-core": "^6.26.0"
   }
 }
