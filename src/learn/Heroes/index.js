@@ -5,12 +5,9 @@ import HeroEditor from "./HeroEditor";
 
 class Heroes extends Component {
   state = {
-    heroes: [
-      { name: "David Bowie", saying: "We can be heroes", id: 1 },
-      { name: "AI", saying: "y'all stupid", id: 13 }
-    ],
+    heroes: [{ name: "AI bot", saying: "y'all stupid lol", id: 13 }],
     editingMode: false,
-    a11yfocus: false,
+    hint: "",
     selectedHero: null
   };
 
@@ -45,21 +42,22 @@ class Heroes extends Component {
               ? { ...newHero, id: Number(newHero.id) }
               : hero
         );
-        this.setState({ heroes: editedHeros, selectedHero: null });
+        this.setState({ heroes: editedHeros, selectedHero: null, hint: "" });
       } else {
         newHero.id = Number(newHero.id);
         this.setState({
           heroes: [...this.state.heroes, newHero],
-          selectedHero: null
+          selectedHero: null,
+          hint: ""
         });
       }
     } else {
-      console.log("გთხოვთ შეავსოთ ყველა ველი");
+      this.setState({ hint: "don't leave an empty input!!" });
     }
   };
 
   handleCancel = () => {
-    this.setState({ selectedHero: null, editingMode: false });
+    this.setState({ selectedHero: null, editingMode: false, hint: "" });
   };
 
   handleChange = e => {
@@ -70,7 +68,7 @@ class Heroes extends Component {
   };
 
   render() {
-    const { heroes, selectedHero, editingMode, focused } = this.state;
+    const { heroes, selectedHero, editingMode, hint } = this.state;
 
     return (
       <div className="container">
@@ -86,16 +84,14 @@ class Heroes extends Component {
             />
           ))}
         </div>
-        {selectedHero && (
-          <HeroEditor
-            focused={focused}
-            selectedHero={selectedHero}
-            editingMode={editingMode}
-            onSave={this.saveHero}
-            onCancel={this.handleCancel}
-            onChange={this.handleChange}
-          />
-        )}
+        <HeroEditor
+          selectedHero={selectedHero}
+          editingMode={editingMode}
+          onSave={this.saveHero}
+          onCancel={this.handleCancel}
+          onChange={this.handleChange}
+          hint={hint}
+        />
       </div>
     );
   }

@@ -1,13 +1,15 @@
 import React from "react";
+import HeroInput from "./Input";
 
 const HeroEditor = ({
-  selectedHero: { id, name, saying },
+  selectedHero,
   editingMode,
   onSave,
   onCancel,
   onChange,
-  focused: autoFocus
+  hint
 }) => {
+  if (!selectedHero) return "";
   return (
     <div className="overlay">
       <div className="hero-editor">
@@ -15,55 +17,35 @@ const HeroEditor = ({
           <p>
             <label>
               <span className="label-helper">id:</span>
-              {id}
+              {selectedHero.id}
             </label>
           </p>
         ) : (
-          <p>
-            <label>
-              <span className="label-helper">id:</span>
-              <input
-                className="hero-input"
-                autoFocus
-                type="number"
-                name="id"
-                value={id}
-                placeholder="id"
-                onChange={onChange}
-              />
-            </label>
-          </p>
+          <HeroInput
+            type="number"
+            label="id"
+            value={selectedHero.id}
+            onChange={onChange}
+          />
         )}
-        <p>
-          <label>
-            <span className="label-helper">name:</span>
-            <input
-              className="hero-input"
-              type="text"
-              name="name"
-              value={name}
-              placeholder="name"
-              onChange={onChange}
-            />
-          </label>
-        </p>
-        <p>
-          <label>
-            <span className="label-helper">saying:</span>
-            <input
-              className="hero-input"
-              type="text"
-              name="saying"
-              value={saying}
-              placeholder="saying"
-              onChange={onChange}
-            />
-          </label>
-        </p>
+        <HeroInput
+          type="text"
+          label="name"
+          value={selectedHero.name}
+          onChange={onChange}
+        />
+        <HeroInput
+          type="text"
+          label="saying"
+          value={selectedHero.saying}
+          onChange={onChange}
+        />
+
         <div className="btn-container">
           <button onClick={onSave}>save</button>
           <button onClick={onCancel}>cancel</button>
         </div>
+        <p style={{ color: "orangered" }}>{hint}</p>
       </div>
     </div>
   );
