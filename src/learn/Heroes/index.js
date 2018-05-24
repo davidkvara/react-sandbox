@@ -24,8 +24,7 @@ class Heroes extends Component {
   addHero = hero => {
     this.setState({
       selectedHero: { id: "", name: "", saying: "" },
-      editingMode: false,
-      a11yfocus: true
+      editingMode: false
     });
   };
 
@@ -61,10 +60,12 @@ class Heroes extends Component {
   };
 
   handleChange = e => {
-    let selectedHero = this.state.selectedHero;
-    selectedHero[e.target.name] = e.target.value;
-
-    this.setState({ selectedHero });
+    const { name, value } = e.target;
+    this.setState(prevState => {
+      let selectedHero = { ...prevState.selectedHero };
+      selectedHero[name] = value;
+      return { selectedHero };
+    });
   };
 
   render() {
