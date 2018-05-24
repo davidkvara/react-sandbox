@@ -90,3 +90,14 @@ ul {
   border: 0;
   transition: 0.3s;
 }
+
+.todo-filters {
+  border-top: 1px solid #eaeaea;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.todo-filters button {
+  margin: 0 4px;
+}
