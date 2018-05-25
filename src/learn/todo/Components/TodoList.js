@@ -1,9 +1,9 @@
 import React from "react";
 import TodoItem from "./TodoItem";
-import TodoFilter from "./TodoFilter";
+import TodoPanel from "./TodoPanel";
 
 function TodoList(props) {
-  if (props.todos.length === 0) return "";
+  if (props.todoLengths.originalTodos === 0) return "";
   return (
     <React.Fragment>
       <ul>
@@ -18,7 +18,12 @@ function TodoList(props) {
           );
         })}
       </ul>
-      <TodoFilter handleFilter={props.onFilter} filterType={props.filter} />
+      <TodoPanel
+        completed={props.todoLengths.activeTodos}
+        handleFilter={props.onFilterChange}
+        filterType={props.filter}
+        clearCompleted={props.handleClear}
+      />
     </React.Fragment>
   );
 }

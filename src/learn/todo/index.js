@@ -49,16 +49,29 @@ class Todo extends React.Component {
     this.setState({ visibility_filter: filterType });
   };
 
+  clearCompleted = () => {
+    const completed = this.state.todos.filter(todo => !todo.completed);
+
+    this.setState({ todos: completed });
+  };
+
   render() {
+    // displayed todos
     const todos = filter(this.state.visibility_filter, this.state.todos);
+    // pass these lengths for displaying stats in panel
+    // I know I could pass the whole todos,
+    // but i'm not sure if that's a good idea
+    // TODO: check compatibility with best practices
+    const lengthOf = {
+      activeTodos: filter("SHOW_ACTIVE", this.state.todos).length,
+      originalTodos: this.state.todos.length
+    };
     return (
       <div className="todo">
         <h1 className="td-title">todos</h1>
         <Input
           onChange={this.handleChange}
           value={this.state.value}
-          placeholder="enter todo here"
-          className="input"
           onKeyPress={this.handleSubmit}
         />
         <TodoList
@@ -66,7 +79,9 @@ class Todo extends React.Component {
           onDelete={this.handleDelete}
           onCheck={this.handleToggleCheck}
           filter={this.state.visibility_filter}
-          onFilter={this.handleFilter}
+          onFilterChange={this.handleFilter}
+          todoLengths={lengthOf}
+          handleClear={this.clearCompleted}
         />
       </div>
     );

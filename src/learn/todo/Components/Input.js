@@ -4,7 +4,12 @@ import PropTypes from "prop-types";
 export default function Input(props) {
   return (
     <div>
-      <input type="text" {...props} />
+      <input
+        type="text"
+        className="input"
+        placeholder="enter todo here"
+        {...props}
+      />
     </div>
   );
 }
