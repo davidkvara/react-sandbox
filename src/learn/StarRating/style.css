@@ -1,0 +1,43 @@
+.star-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin-top: -30px;
+}
+
+.star {
+  width: 42px;
+  height: 42px;
+  display: inline-block;
+  margin: 0.6rem;
+  background: gray;
+  cursor: pointer;
+  clip-path: polygon(
+    50% 0%,
+    63% 38%,
+    100% 38%,
+    69% 59%,
+    82% 100%,
+    50% 75%,
+    18% 100%,
+    31% 59%,
+    0% 38%,
+    37% 38%
+  );
+  transition: 0.2s ease-out;
+}
+
+.star.selected {
+  background: tomato;
+}
+
+.large {
+  font-size: large;
+}
+
+/* .star:hover {
+  background: #ff9987;
+}
+*/
