@@ -11,8 +11,8 @@ function TodoList(props) {
           return (
             <TodoItem
               key={todo.id}
-              onChange={() => props.onCheck(todo.id)}
-              onClick={() => props.onDelete(todo.id)}
+              onCheck={() => props.onCheck(todo.id)}
+              onDelete={() => props.onDelete(todo.id)}
               {...todo}
             />
           );

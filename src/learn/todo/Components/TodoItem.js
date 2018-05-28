@@ -5,10 +5,10 @@ export default function TodoList(props) {
   return (
     <li className="todo-item">
       <label>
-        <Checkbox onChange={props.onChange} checked={props.completed} />{" "}
+        <Checkbox onChange={props.onCheck} checked={props.completed} />{" "}
         <span>{props.text}</span>
       </label>
-      <CloseButton onClick={props.onClick}>&times;</CloseButton>
+      <CloseButton onClick={props.onDelete}>&times;</CloseButton>
     </li>
   );
 }

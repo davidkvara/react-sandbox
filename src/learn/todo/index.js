@@ -50,9 +50,9 @@ class Todo extends React.Component {
   };
 
   clearCompleted = () => {
-    const completed = this.state.todos.filter(todo => !todo.completed);
+    const activeTodos = this.state.todos.filter(todo => !todo.completed);
 
-    this.setState({ todos: completed });
+    this.setState({ todos: activeTodos });
   };
 
   render() {
