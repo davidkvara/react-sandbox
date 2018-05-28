@@ -29,7 +29,7 @@ class Heroes extends Component {
   };
 
   saveHero = () => {
-    const newHero = this.state.selectedHero;
+    const newHero = { ...this.state.selectedHero };
     if (newHero.id && newHero.name && newHero.saying) {
       const idExists = this.state.heroes.findIndex(
         hero => hero.id === Number(newHero.id)
