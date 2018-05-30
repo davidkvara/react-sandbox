@@ -5,6 +5,8 @@ import ImageGrid from "./components/ImageGrid";
 import ImageSearch from "./components/ImageSearch";
 import Header from "./components/Header";
 
+import debounce from "lodash.debounce";
+
 class App extends Component {
   state = { hits: [], searchWord: "", amount: 25, currentImg: "" };
 
@@ -14,7 +16,7 @@ class App extends Component {
     });
   };
 
-  fetchImages = () => {
+  fetchImages = debounce(() => {
     if (!this.state.searchWord) {
       this.setState({ hits: [] });
       return;
@@ -27,7 +29,7 @@ class App extends Component {
     fetch(URL)
       .then(res => res.json())
       .then(data => this.setState({ hits: data.hits }));
-  };
+  }, 800);
 
   previewPic = currentImg => {
     this.setState({ currentImg });
