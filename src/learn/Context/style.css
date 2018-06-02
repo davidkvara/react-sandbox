@@ -1,0 +1,13 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+button {
+  border: 0;
+  padding: 6px 10px 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin: 0 2px;
+}
