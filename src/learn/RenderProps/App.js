@@ -5,19 +5,22 @@ https://levelup.gitconnected.com/understanding-react-render-props-by-example-71f
 */
 
 import React from "react";
-// import SharedComponent from "./Components/ModulaA";
-import She from "./MousePos";
+import SharedComponent from "./ModulaA";
+import PositionTracker from "./MousePos";
 
 class SayHello extends React.Component {
   render() {
     return (
       <div style={{ height: "100%" }}>
-        <She
+        <PositionTracker
           render={({ x, y }) => (
             <h1 style={styles.circle}>
               x: {x}, y: {y}
             </h1>
           )}
+        />
+        <SharedComponent
+          render={({ name }) => <h2>simple example - {name}</h2>}
         />
       </div>
     );
@@ -36,9 +39,9 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    opacity: 0.9,
+    fontSize: "1.1rem",
     border: "2px solid gold",
-    boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+    boxShadow: "inset 0 0 14px rgba(0,0,0,0.18)",
     fontWeight: 400
   }
 };

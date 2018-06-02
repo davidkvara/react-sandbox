@@ -3,11 +3,12 @@ import React from "react";
 class MousePos extends React.Component {
   state = { x: 0, y: 0 };
 
-  handleMouseMove = event => {
-    this.setState({
-      x: event.clientX,
-      y: event.clientY
-    });
+  handleMouseMove = e => {
+    const rect = e.target.getBoundingClientRect();
+    const x = parseInt(e.clientX - rect.left, 0);
+    const y = parseInt(e.clientY - rect.top, 0);
+
+    this.setState({ x, y });
   };
 
   render() {
