@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import "./film.css";
-
-import FilmsList from "./filmslist";
+import FilmsList from "./components/FilmsList";
+import "./style.css";
 
 class App extends Component {
-  state = { films: [] };
+  state = { films: [], error: "" };
 
   componentDidMount() {
     this.getAsyncData();
@@ -12,30 +11,35 @@ class App extends Component {
 
   async getAsyncData() {
     try {
-      const data = await fetch("https://ghibliapi.herokuapp.com/films/");
+      const data = await fetch("https://ghibliapi.herokuapp.com/fils/");
       const results = await data.json();
       const films = results.map(film => ({
         title: film.title,
-        description: film.description,
-        rt_score: film.rt_score,
         release_date: film.release_date,
-        id: film.id,
-        director: film.director
+        director: film.director,
+        rt_score: film.rt_score,
+        description: film.description,
+        id: film.id
       }));
+
       this.setState({ films });
     } catch (err) {
-      console.log("error: ", err);
+      this.setState({ error: "Oops, error occured!" });
     }
   }
 
   render() {
-    const { films } = this.state;
+    const { films, error } = this.state;
 
     return (
       <div className="demo">
         <h2>Welcome to PromiseLand!</h2>
         <h3>Studio Ghibli Films</h3>
-        {films.length > 0 && <FilmsList films={films} />}
+        {error ? (
+          <p style={{ color: "red" }}>{error}</p>
+        ) : (
+          <FilmsList films={films} />
+        )}
       </div>
     );
   }
