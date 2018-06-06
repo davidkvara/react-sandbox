@@ -9,7 +9,7 @@ import { Button, Welcome } from "@storybook/react/demo";
 import Tweet from "../learn/tweet/app";
 import Calculator from "../learn/calculator";
 import Game from "../learn/TicTacToe";
-import Todo from "../learn/todo/todo";
+import Todo from "../learn/todo";
 
 storiesOf("Welcome", module).add("to Storybook", () => (
   <Welcome showApp={linkTo("Button")} />
@@ -20,7 +20,11 @@ storiesOf("Button", module)
     <Button onClick={action("clicked")}>Hello Button</Button>
   ))
   .add("with some emoji", () => (
-    <Button onClick={action("clicked")}>emojis were here</Button>
+    <Button onClick={action("clicked")}>
+      <span role="img" aria-label="so cool">
+        😀 😎 👍 💯
+      </span>
+    </Button>
   ));
 
 storiesOf("Tweet", module).add("with image", () => <Tweet />);
