@@ -2,7 +2,7 @@ const data = [
   {
     name: "Baked Salmon",
     ingredients: [
-      { name: "Salmon", amount: 1, measurement: "lb" },
+      { name: "Salmon", amount: 1, measurement: "l lb" },
       { name: "Pine Nuts", amount: 1, measurement: "cup" },
       { name: "Butter Lettuce", amount: 2, measurement: "cups" },
       { name: "Yellow Squash", amount: 1, measurement: "med" },
@@ -21,7 +21,7 @@ const data = [
   {
     name: "Fish Tacos",
     ingredients: [
-      { name: "Whitefish", amount: 1, measurement: "lb" },
+      { name: "Whitefish", amount: 1, measurement: "l lb" },
       { name: "Cheese", amount: 1, measurement: "cup" },
       { name: "Iceberg Lettuce", amount: 2, measurement: "cups" },
       { name: "Tomatoes", amount: 2, measurement: "large" },
@@ -30,7 +30,7 @@ const data = [
     steps: [
       "Cook the fish on the grill until hot.",
       "Place the fish on the 3 tortillas.",
-      "Top them with lettuce, tomatoes, and cheese."
+      "Top them with lettuce, tomatoes, and cheese"
     ]
   }
 ];
