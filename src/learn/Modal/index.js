@@ -1,31 +1,25 @@
 import React from "react";
-import Modal from "./modal";
+import Modal from "./Modal";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
-import "./modal.css";
+import "./style.css";
 
 class App extends React.Component {
   state = { isOpen: false };
 
-  handleModOpen = () => {
+  handleShow = () => {
     this.setState({ isOpen: true });
   };
 
-  handleModClose = () => {
+  handleHide = () => {
     this.setState({ isOpen: false });
   };
 
   render() {
     return (
       <div className="container">
-        <h3>
-          Quidem ullam reprehenderit sint culpa facere cum labore, ipsum minima.
-        </h3>
-        <h3>
-          Quo quae harum deserunt nihil placeat necessitatibus blanditiis nobis
-          debitis!
-        </h3>
+        <h2>Modal example with csstransitiongroup</h2>
+        <button onClick={this.handleShow}>show modal</button>
 
-        <button onClick={this.handleModOpen}>show modal</button>
         <ReactCSSTransitionGroup
           transitionName="modal"
           transitionEnterTimeout={500}
@@ -33,7 +27,7 @@ class App extends React.Component {
           component="div"
         >
           {this.state.isOpen && (
-            <Modal onClose={this.handleModClose}>Hello Dave!</Modal>
+            <Modal onClose={this.handleHide}>Hello Dave!</Modal>
           )}
         </ReactCSSTransitionGroup>
       </div>

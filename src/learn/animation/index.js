@@ -19,11 +19,15 @@ class TodoList extends React.Component {
   }
 
   render() {
+    const todos = this.state.items.map((item, i) => (
+      <div key={item} className="item" onClick={() => this.handleRemove(i)}>
+        {item}
+      </div>
+    ));
     return (
-      <div className="container">
+      <div className="container" style={{ padding: 20 }}>
         <Input
           onSubmit={this.handleAdd}
-          type="text"
           style={{ padding: "4px 6px" }}
           value={this.state.value}
           placeholder="add item"
@@ -35,28 +39,17 @@ class TodoList extends React.Component {
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}
         >
-          {this.state.items.map((item, i) => (
-            <div
-              key={item}
-              className="item"
-              onClick={() => this.handleRemove(i)}
-            >
-              {item}
-            </div>
-          ))}
+          {todos}
         </ReactCSSTransitionGroup>
       </div>
     );
   }
 }
 
-function Input({ onSubmit, ...rest }) {
-  return (
-    <form onSubmit={onSubmit}>
-      {" "}
-      <input {...rest} />
-    </form>
-  );
-}
+const Input = ({ onSubmit, ...rest }) => (
+  <form onSubmit={onSubmit}>
+    <input type="text" {...rest} />
+  </form>
+);
 
 export default TodoList;

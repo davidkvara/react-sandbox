@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import HeroesContainer from "./components/HeroesContainer";
+import HeroEditor from "./components/HeroEditor";
 import "./style.css";
-import Hero from "./Hero";
-import HeroEditor from "./HeroEditor";
 
 class Heroes extends Component {
   state = {
@@ -75,16 +75,11 @@ class Heroes extends Component {
       <div className="container">
         <h2>We can be heroes, just for one day</h2>
         <button onClick={this.addHero}>add new Hero</button>
-        <div className="heroes-container">
-          {heroes.map(hero => (
-            <Hero
-              key={hero.id}
-              {...hero}
-              onClick={() => this.handleEdit(hero)}
-              onDelete={e => this.heroDelete(e, hero.id)}
-            />
-          ))}
-        </div>
+        <HeroesContainer
+          heroes={heroes}
+          onClick={this.handleEdit}
+          onDelete={this.heroDelete}
+        />
         <HeroEditor
           selectedHero={selectedHero}
           editingMode={editingMode}

@@ -1,13 +1,28 @@
 import React from "react";
 import styled from "styled-components";
 
+const Modal = ({ onClose, children }) => (
+  <Overlay>
+    <div className="message">
+      <CloseBtn onClick={onClose}>&times;</CloseBtn>
+      <Title>{children}</Title>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quos
+      totam tempore, sit cumque eveniet odit?
+      <ButtonGroup>
+        <Button>Agree</Button>
+        <Button onClick={onClose}>cancel</Button>
+      </ButtonGroup>
+    </div>
+  </Overlay>
+);
+
 const Overlay = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
   left: 0;
   top: 0;
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.8);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,13 +44,14 @@ const CloseBtn = styled.button`
     color: #555;
   }
 `;
-const Group = styled.div`
+
+const ButtonGroup = styled.div`
   margin: 20px 0 0;
   display: flex;
   justify-content: flex-end;
 `;
 
-const Ghili = styled.button`
+const Button = styled.button`
   background: #02b3e4;
   box-shadow: 8px 10px 20px 0 rgba(46, 61, 73, 0.2);
   color: #fff;
@@ -67,21 +83,5 @@ const Title = styled.h2`
   font-weight: 300;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 `;
-
-const Modal = props => {
-  return (
-    <Overlay>
-      <div className="message">
-        <CloseBtn onClick={props.onClose}>&times;</CloseBtn>
-        <Title>{props.children}</Title>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quos
-        totam tempore, sit cumque eveniet odit?
-        <Group>
-          <Ghili>Agree</Ghili> <Ghili>cancel</Ghili>
-        </Group>
-      </div>
-    </Overlay>
-  );
-};
 
 export default Modal;
