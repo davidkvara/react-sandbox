@@ -5,13 +5,13 @@ https://levelup.gitconnected.com/understanding-react-render-props-by-example-71f
 */
 
 import React from "react";
-import SharedComponent from "./ModulaA";
-import PositionTracker from "./MousePos";
+import SharedComponent from "./components/Fire";
+import PositionTracker from "./components/MousePos";
 
-class SayHello extends React.Component {
+export default class SayHello extends React.Component {
   render() {
     return (
-      <div style={{ height: "100%" }}>
+      <div style={{ height: "100%" }} className="container">
         <PositionTracker
           render={({ x, y }) => (
             <h1 style={styles.circle}>
@@ -19,9 +19,7 @@ class SayHello extends React.Component {
             </h1>
           )}
         />
-        <SharedComponent
-          render={({ name }) => <h2>simple example - {name}</h2>}
-        />
+        <SharedComponent render={context => <h2>gimme some {context}</h2>} />
       </div>
     );
   }
@@ -31,7 +29,7 @@ const styles = {
   circle: {
     width: 300,
     height: 300,
-    borderRadius: "50%",
+    // borderRadius: "50%",
     background: "lightyellow",
     position: "fixed",
     top: "calc(50% - 150px)",
@@ -41,9 +39,6 @@ const styles = {
     alignItems: "center",
     fontSize: "1.1rem",
     border: "2px solid gold",
-    boxShadow: "inset 0 0 14px rgba(0,0,0,0.18)",
-    fontWeight: 400
+    boxShadow: "inset 0 0 20px rgba(0,0,0,0.15)"
   }
 };
-
-export default SayHello;

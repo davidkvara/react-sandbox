@@ -5,8 +5,8 @@ class MousePos extends React.Component {
 
   handleMouseMove = e => {
     const rect = e.target.getBoundingClientRect();
-    const x = parseInt(e.clientX - rect.left, 0);
-    const y = parseInt(e.clientY - rect.top, 0);
+    const x = parseInt(e.clientX - rect.left, 10);
+    const y = parseInt(e.clientY - rect.top, 10);
 
     this.setState({ x, y });
   };
