@@ -9,7 +9,7 @@ export default function Toolbar(props) {
   return (
     <div className="container">
       <p>this button uses the theme from state </p>
-      <ThemedButton onClick={props.changeTheme}>change theme</ThemedButton>
+      <ThemedButton onClick={props.changeTheme}>Toggle theme</ThemedButton>
     </div>
   );
 }
