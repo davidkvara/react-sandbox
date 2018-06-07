@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const Modal = ({ onClose, children }) => (
+const Modal = ({ onClose }) => (
   <Overlay>
     <div className="message">
       <CloseBtn onClick={onClose}>&times;</CloseBtn>
-      <Title>{children}</Title>
+      <Title>Hello David!!</Title>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem quos
       totam tempore, sit cumque eveniet odit?
       <ButtonGroup>

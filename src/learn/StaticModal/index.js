@@ -15,6 +15,7 @@ class App extends React.Component {
   };
 
   render() {
+    const modal = this.state.isOpen && <Modal onClose={this.handleHide} />;
     return (
       <div className="container">
         <h2>Modal example with csstransitiongroup</h2>
@@ -26,9 +27,7 @@ class App extends React.Component {
           transitionLeaveTimeout={300}
           component="div"
         >
-          {this.state.isOpen && (
-            <Modal onClose={this.handleHide}>Hello Dave!</Modal>
-          )}
+          {modal}
         </ReactCSSTransitionGroup>
       </div>
     );

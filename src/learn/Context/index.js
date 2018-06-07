@@ -1,8 +1,8 @@
 import React from "react";
-import "./style.css";
 import { ThemeContext, themes } from "./theme-context";
-import ThemedButton from "./components/ThemedButton";
 import Toolbar from "./components/Toolbar";
+import ThemedButton from "./components/ThemedButton";
+import "./style.css";
 
 class App extends React.Component {
   state = { theme: themes.light, counter: 0 };
@@ -24,7 +24,7 @@ class App extends React.Component {
   render() {
     // The ThemedButton button inside the ThemeProvider
     // uses the theme from state while the one outside uses
-    // the default dark theme
+    // the default theme
     return (
       <div className="container">
         <ThemeContext.Provider value={this.state.theme}>
