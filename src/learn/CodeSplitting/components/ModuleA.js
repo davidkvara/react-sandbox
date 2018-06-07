@@ -2,20 +2,25 @@ import React from "react";
 import styled from "styled-components";
 
 export default class Widget extends React.Component {
-  state = { count: 0 };
+  state = { number: 300 };
 
   increment = () => {
-    this.setState(prevState => ({ count: prevState.count + 1 }));
+    this.setState(({ number }) => ({ number: number + 1 }));
   };
 
   decrement = () => {
-    this.setState(prevState => ({ count: prevState.count - 1 }));
+    this.setState(({ number }) => ({ number: number - 1 }));
   };
 
   render() {
     return (
-      <div>
-        <Header>Example1 - dynamic import </Header>
+      <div style={{ border: "2px solid #eee", padding: 10, margin: "10px 0" }}>
+        <h2 style={{ marginTop: 0 }}>
+          Module A{" "}
+          <span role="img" aria-labelledby="slice of pizza">
+            🍕
+          </span>
+        </h2>
         <div
           style={{
             display: "flex",
@@ -26,7 +31,7 @@ export default class Widget extends React.Component {
         >
           <Button onClick={this.increment}>+</Button>
           <div style={{ minWidth: 100, textAlign: "center", fontWeight: 600 }}>
-            {this.state.count}
+            <mark>{this.state.number}</mark>
           </div>
           <Button onClick={this.decrement}>-</Button>
         </div>
@@ -45,9 +50,8 @@ const Button = styled.button`
   background: #fff;
   width: 60px;
   border: 1px solid #ddd;
+  border-radius: 3px;
   &:focus {
     background: #f9f9f9;
   }
 `;
-
-const Header = props => <h2 style={{ marginTop: 10 }}>{props.children}</h2>;

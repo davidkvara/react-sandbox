@@ -2,10 +2,13 @@
 import React, { Component } from "react";
 
 class App extends Component {
-  state = { txt: null, box: null };
+  state = { txt: null, box: null, modal: null };
+
+  // TODO improve error handling
 
   handleClick = () => {
-    import("./moduleA")
+    // default import
+    import("./components/ModuleA")
       .then(some => {
         this.setState({ txt: some.default });
       })
@@ -14,8 +17,24 @@ class App extends Component {
       });
   };
 
+  openModal = () => {
+    // default import
+    import("./components/Modal")
+      .then(modal => {
+        this.setState({ modal: modal.default, modalIsOpen: true });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  hideModal = () => {
+    this.setState({ modalIsOpen: false });
+  };
+
   handleLoad = () => {
-    import("./AverageBox")
+    // named import
+    import("./components/ModuleB")
       .then(es => {
         this.setState({ box: es.AverageBox });
       })
@@ -25,7 +44,7 @@ class App extends Component {
   };
 
   render() {
-    const { txt: Txt, box: AverageBox } = this.state;
+    const { txt: Txt, box: AverageBox, modal: Modal } = this.state;
     return (
       <div>
         <div className="container">
@@ -43,10 +62,19 @@ class App extends Component {
             the user may never need, and reduced the amount of code needed
             during the initial load.
           </p>
-          <button onClick={this.handleClick}>load new component</button>
-          <button onClick={this.handleLoad}>load average box</button>
-          {this.state.txt !== null && <Txt />}
-          {this.state.box !== null && <AverageBox />}
+          <h3>Dynamically load</h3>
+          <p>
+            <em>see networks tab in devtools</em>
+          </p>
+          <button onClick={this.handleClick}>Module A</button>
+          <button onClick={this.handleLoad}>Module B</button>
+          <button onClick={this.openModal}>Modal</button>
+
+          {/* TODO: refactore these */}
+          {this.state.txt && <Txt />}
+          {this.state.box && <AverageBox />}
+          {this.state.modal &&
+            this.state.modalIsOpen && <Modal hideModal={this.hideModal} />}
         </div>
       </div>
     );
