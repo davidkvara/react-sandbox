@@ -1,5 +1,5 @@
 import React from "react";
-import "./css/tictactoe.css";
+import "./tictactoe.css";
 
 function Square(props) {
   const helper = props.value === "X" ? " x-color" : "";

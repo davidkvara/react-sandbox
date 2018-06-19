@@ -1,6 +1,6 @@
 // Temperature converter. Lifting state up example. More at: https://reactjs.org/docs/lifting-state-up.html
 import React from "react";
-import "./css/calculator.css";
+import "./calculator.css";
 
 function BoilingVerdict(props) {
   const boilResult =
@@ -14,8 +14,8 @@ const scaleName = {
   f: "Fahrenheit"
 };
 
-const toCelsius = fahrenheit => (fahrenheit - 32) * 5 / 9;
-const toFahrenheit = celsius => celsius * 9 / 5 + 32;
+const toCelsius = fahrenheit => ((fahrenheit - 32) * 5) / 9;
+const toFahrenheit = celsius => (celsius * 9) / 5 + 32;
 
 function tryConvert(temp, convert) {
   const input = parseFloat(temp);

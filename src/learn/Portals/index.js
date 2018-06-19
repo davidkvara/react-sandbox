@@ -26,7 +26,7 @@ class App extends React.Component {
               With a portal, we can render content into a different part of the
               DOM, as if it were any other React child.
             </div>
-            <p>This is being rendered inside the #modal-container div.</p>
+            <p>This is being rendered inside the #modal-root div.</p>
             <button onClick={this.handleHide}>Hide modal</button>
           </div>
         </div>

@@ -11,7 +11,7 @@ class App extends Component {
 
   async getAsyncData() {
     try {
-      const data = await fetch("https://ghibliapi.herokuapp.com/fils/");
+      const data = await fetch("https://ghibliapi.herokuapp.com/films/");
       const results = await data.json();
       const films = results.map(film => ({
         title: film.title,
