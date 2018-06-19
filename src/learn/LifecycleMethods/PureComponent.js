@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-class App extends React.Component {
+export default class App extends React.Component {
   state = { lapse: new Date() };
 
   componentDidMount() {
@@ -20,42 +20,17 @@ class App extends React.Component {
 
   render() {
     const { lapse } = this.state;
-    // console.log(lapse);
+    console.log("App rendered");
     return (
       <Container>
-        <h2>{lapse.toLocaleTimeString()}</h2>
-        <Div
-          style={{
-            color: "darkcyan",
-            borderBottom: "1px dotted",
-            fontStyle: "italic"
-          }}
-        >
-          check console
-        </Div>
+        <h3>{lapse.toLocaleTimeString()}</h3>
+        check console
         <Main />
         <Footer />
       </Container>
     );
   }
 }
-
-const Container = styled.div`
-  text-align: center;
-  padding: 100px 20px;
-  font-family: sans-serif;
-  color: #434343;
-  font-size: 36px;
-`;
-
-const Div = styled.div`
-  font-weight: 600;
-  padding: 1em 0;
-  color: indianred;
-  font-size: 32px;
-  font-variant: small-caps;
-  letter-spacing: 2px;
-`;
 
 class Footer extends React.PureComponent {
   render() {
@@ -64,11 +39,29 @@ class Footer extends React.PureComponent {
   }
 }
 
-class Main extends React.Component {
-  render() {
-    console.log("rendered Component");
-    return <Div>Component</Div>;
-  }
-}
+const Main = () => {
+  console.log("component 2");
+  return <Div>Component 2</Div>;
+};
 
-export default App;
+const Container = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 100px 20px;
+  font-family: sans-serif;
+  color: #434343;
+  font-size: 36px;
+  border: 2px solid salmon;
+`;
+
+const Div = styled.div`
+  font-weight: 600;
+  padding: 1em 0;
+  margin: 1rem 0;
+  color: indianred;
+  font-size: 32px;
+  font-variant: small-caps;
+  letter-spacing: 2px;
+  border: 1px solid orange;
+`;
