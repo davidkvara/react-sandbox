@@ -34,17 +34,20 @@
   left: 50%;
   transform: translateX(-50%);
   font-size: 20px;
-  user-select: none;
-  color: firebrick;
-  cursor: default;
-  animation: cim 1s infinite alternate;
+  pointer-events: none;
+  color: midnightblue;
+  letter-spacing: 1px;
+  animation: cim-cim 1.5s infinite;
 }
 
-@keyframes cim {
-  from {
+@keyframes cim-cim {
+  0% {
     opacity: 1;
   }
-  to {
-    opacity: 0.5;
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
