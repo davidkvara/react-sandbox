@@ -1,0 +1,50 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.4rem 2rem;
+  background: #fff;
+  transition: 0.2s ease-in-out;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
+  color: #262626;
+  z-index: 1;
+}
+
+.main {
+  min-height: 2000px;
+  padding-top: 100px;
+  background: #fafafa;
+}
+
+.footer {
+  padding: 1rem 0;
+  background: #312;
+  color: #f8f8f8;
+  text-align: center;
+}
+
+.header.scrolled {
+  padding: 0.8rem 2rem;
+}
+
+.sign {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  user-select: none;
+  color: firebrick;
+  cursor: default;
+  animation: cim 1s infinite alternate;
+}
+
+@keyframes cim {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
