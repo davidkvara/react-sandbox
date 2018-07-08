@@ -1,55 +1,22 @@
 import React from "react";
+import { withData } from "./dataFetcher";
 
-// TODO: Analyze
-
-const DataComponent = (ComposedComponent, url) =>
-  class DataComponent extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        data: [],
-        loading: false,
-        loaded: false
-      };
-    }
-    componentDidMount() {
-      this.setState({ loading: true });
-      fetch(url)
-        .then(response => response.json())
-        .then(data =>
-          this.setState({
-            loaded: true,
-            loading: false,
-            data
-          })
-        );
-    }
-    render() {
-      return (
-        <div className="data-component">
-          {this.state.loading ? (
-            <div>Loading...</div>
-          ) : (
-            <ComposedComponent {...this.state} {...this.props} />
-          )}
-        </div>
-      );
-    }
-  };
-
-const CountryNames = ({ data, selected = "" }) => (
-  <select className="people-list" defaultValue={selected}>
-    {data.map(({ name }, i) => (
-      <option key={i} value={name}>
-        {name}
-      </option>
-    ))}
-  </select>
+const App = ({ data, loading, selected = "Georgia" }) => (
+  <div className="container">
+    <h2>My App is going on</h2>
+    <p>some other staff</p>
+    {loading ? (
+      <p>Loading...</p>
+    ) : (
+      <select className="people-list" defaultValue={selected}>
+        {data.map(({ name }, i) => (
+          <option key={i} value={name}>
+            {name}
+          </option>
+        ))}
+      </select>
+    )}
+  </div>
 );
 
-const CountryDropDown = DataComponent(
-  CountryNames,
-  "https://restcountries.eu/rest/v1/all"
-);
-
-export default CountryDropDown;
+export default withData(App, "https://restcountries.eu/rest/v1/all");
