@@ -1,7 +1,8 @@
 import React from "react";
 
-export default () => (
-  <React.Fragment>
-    <h2 style={{ padding: 30, margin: 0 }}>React Sandbox</h2>
-  </React.Fragment>
-);
+export default () => <h1 style={title}>React Sandbox</h1>;
+
+const title = {
+  padding: "2rem 0.5rem 0.75rem",
+  margin: "0 2rem"
+};

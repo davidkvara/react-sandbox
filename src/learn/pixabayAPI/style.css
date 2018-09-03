@@ -98,28 +98,30 @@
 }
 
 .preview {
-  /* width: 64%; */
-  height: 84%;
-  border: 4px solid #f8f8f8;
-  border-radius: 5px;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 640px;
+  height: 100%;
   position: relative;
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.212);
 }
 
 .prev-close {
   position: absolute;
-  right: -30px;
-  top: -44px;
+  right: -34px;
+  top: -36px;
   cursor: pointer;
-  color: #fff;
-  font-size: 36px;
   background: none;
   border: 0;
 }
 
 .modal img {
+  width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  /* border: 3px solid #fefefe; */
 }
 
 /* transition for modal */
@@ -138,5 +140,5 @@
 
 .modal-leave.modal-leave-active {
   opacity: 0.01;
-  transition: 100ms ease-in;
+  transition: 100ms ease-out;
 }
