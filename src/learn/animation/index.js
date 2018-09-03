@@ -1,46 +1,38 @@
-// more at :: https://reactjs.org/docs/animation.html
 import React from "react";
 import ReactCSSTransitionGroup from "react-addons-css-transition-group";
 import "./css/some.css";
 
-class TodoList extends React.Component {
-  state = { items: ["hello", "world", "click", "me"], value: "" };
+export default class TodoList extends React.Component {
+  state = {
+    items: [{ name: "Hello", id: 45 }, { name: "Universe", id: 22 }],
+    value: ""
+  };
 
   handleAdd = e => {
     e.preventDefault();
-    const newItems = this.state.items.concat(this.state.value);
-    this.setState({ items: newItems, value: "" });
+    const newItem = {
+      name: this.state.value,
+      id: Date.now()
+    };
+    this.setState({ items: [...this.state.items, newItem], value: "" });
   };
 
-  handleRemove(i) {
-    let newItems = this.state.items.slice();
-    newItems.splice(i, 1);
-    this.setState({ items: newItems });
-  }
+  handleRemove = id => {
+    const items = this.state.items.filter(item => item.id !== id);
+    this.setState({ items });
+  };
 
   render() {
-    const todos = this.state.items.map((item, i) => (
-      <div key={item} className="item" onClick={() => this.handleRemove(i)}>
-        {item}
-      </div>
-    ));
     return (
-      <div className="container" style={{ padding: 20 }}>
+      <div className="wrapper">
+        <h2>List of things</h2>
         <Input
           onSubmit={this.handleAdd}
-          style={{ padding: "4px 6px" }}
           value={this.state.value}
           placeholder="add item"
           onChange={e => this.setState({ value: e.target.value })}
         />
-        <ReactCSSTransitionGroup
-          className="grid-container"
-          transitionName="example"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}
-        >
-          {todos}
-        </ReactCSSTransitionGroup>
+        <ListItems items={this.state.items} handleRemove={this.handleRemove} />
       </div>
     );
   }
@@ -48,8 +40,29 @@ class TodoList extends React.Component {
 
 const Input = ({ onSubmit, ...rest }) => (
   <form onSubmit={onSubmit}>
-    <input type="text" {...rest} />
+    <input {...rest} className="input" />
   </form>
 );
 
-export default TodoList;
+const ListItems = props => {
+  const todos = props.items.map(item => (
+    <li
+      key={item.id}
+      className="item"
+      onClick={() => props.handleRemove(item.id)}
+    >
+      {item.name}
+    </li>
+  ));
+  return (
+    <ReactCSSTransitionGroup
+      component="ul"
+      className="list"
+      transitionName="list"
+      transitionEnterTimeout={500}
+      transitionLeaveTimeout={300}
+    >
+      {todos}
+    </ReactCSSTransitionGroup>
+  );
+};

@@ -1,36 +1,74 @@
-.grid-container {
-  max-width: 800px;
+.wrapper {
+  max-width: 500px;
   margin: 0 auto;
-  padding: 1em 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  grid-gap: 1em;
+  font-size: 15px;
+  color: #376489;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #c0c0c0;
+  background: #fff;
+  letter-spacing: 0.5px;
+  height: 40px;
+}
+
+.input:focus {
+  background: ghostwhite;
+  outline: 1px solid lightblue;
+  border-color: lightblue;
+}
+
+.list {
+  padding-left: 0;
+  list-style: none;
+  margin: 1rem 0;
 }
 
 .item {
-  padding: 14px;
-  background: slategray;
-  color: #eee;
+  padding: 12px 14px 10px;
+  display: block;
+  font-size: inherit;
+  width: 100%;
+  text-align: left;
+  background: cadetblue;
+  color: #fff;
+  margin-bottom: 10px;
   border-radius: 3px;
-  cursor: default;
-  font-size: 18px;
-  text-align: center;
+  border: 0;
+  border-bottom: 2px solid darkcyan;
+  transition: 0.3s ease;
+  letter-spacing: 0.5px;
+  user-select: none;
 }
 
-.example-enter {
+.item:hover {
+  opacity: 0.9;
+}
+
+.item:focus {
+  outline: 3px solid gold;
+}
+
+.list-enter {
   opacity: 0.01;
+  transform: translateY(22px);
 }
 
-.example-enter.example-enter-active {
+.list-enter.list-enter-active {
   opacity: 1;
-  transition: 300ms ease-in;
+  transition: 300ms ease-out;
+  transform: translateY(0);
 }
 
-.example-leave {
+.list-leave {
   opacity: 1;
 }
 
-.example-leave.example-leave-active {
+.list-leave.list-leave-active {
   opacity: 0.01;
-  transition: 300ms ease-in;
+  transition: 200ms ease-out;
+  transform: translateX(14px);
 }
