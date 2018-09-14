@@ -1,7 +1,7 @@
 .wrapper {
-  max-width: 500px;
+  max-width: 460px;
   margin: 0 auto;
-  font-size: 15px;
+  font-size: 0.95rem;
   color: #376489;
 }
 
@@ -24,7 +24,6 @@
 .list {
   padding-left: 0;
   list-style: none;
-  margin: 1rem 0;
 }
 
 .item {

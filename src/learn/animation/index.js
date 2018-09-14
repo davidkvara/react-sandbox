@@ -44,25 +44,27 @@ const Input = ({ onSubmit, ...rest }) => (
   </form>
 );
 
-const ListItems = props => {
-  const todos = props.items.map(item => (
-    <li
-      key={item.id}
-      className="item"
-      onClick={() => props.handleRemove(item.id)}
-    >
-      {item.name}
-    </li>
-  ));
-  return (
-    <ReactCSSTransitionGroup
-      component="ul"
-      className="list"
-      transitionName="list"
-      transitionEnterTimeout={500}
-      transitionLeaveTimeout={300}
-    >
-      {todos}
-    </ReactCSSTransitionGroup>
-  );
-};
+class ListItems extends React.PureComponent {
+  render() {
+    const todos = this.props.items.map(item => (
+      <li
+        key={item.id}
+        className="item"
+        onClick={() => this.props.handleRemove(item.id)}
+      >
+        {item.name}
+      </li>
+    ));
+    return (
+      <ReactCSSTransitionGroup
+        component="ul"
+        className="list"
+        transitionName="list"
+        transitionEnterTimeout={500}
+        transitionLeaveTimeout={300}
+      >
+        {todos}
+      </ReactCSSTransitionGroup>
+    );
+  }
+}
