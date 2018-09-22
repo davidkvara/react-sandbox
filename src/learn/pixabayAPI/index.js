@@ -32,11 +32,20 @@ class App extends Component {
   }, 800);
 
   previewPic = currentImg => {
-    this.setState({ currentImg });
+    this.setState({ currentImg }, () => {
+      // console.log(document.activeElement);
+
+      if (!!this.state.currentImg) {
+        document.documentElement.style = `
+          overflow: hidden; padding-right: 17px`;
+      }
+    });
   };
 
   closeModal = () => {
-    this.setState({ currentImg: "" });
+    this.setState({ currentImg: "" }, () => {
+      document.documentElement.style = "";
+    });
   };
 
   render() {

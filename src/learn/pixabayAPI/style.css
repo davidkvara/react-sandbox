@@ -98,19 +98,20 @@
 }
 
 .preview {
-  width: 100%;
+  width: 94%;
   max-width: 1000px;
   max-height: 640px;
   height: 100%;
-  position: relative;
 }
 
 .prev-close {
   position: absolute;
-  right: -34px;
-  top: -36px;
+  right: 18px;
+  top: 6px;
+  font-size: 2.5rem;
   cursor: pointer;
   background: none;
+  color: #eee;
   border: 0;
 }
 
