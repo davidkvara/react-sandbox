@@ -1,14 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function TodoList(props) {
+export default function TodoList({ onCheck, completed, text, onDelete }) {
   return (
     <li className="todo-item">
       <label>
-        <Checkbox onChange={props.onCheck} checked={props.completed} />{" "}
-        <span>{props.text}</span>
+        <Checkbox onChange={onCheck} checked={completed} /> <span>{text}</span>
       </label>
-      <CloseButton onClick={props.onDelete}>&times;</CloseButton>
+      <CloseButton onClick={onDelete}>&times;</CloseButton>
     </li>
   );
 }
@@ -23,7 +22,7 @@ function CloseButton(props) {
 
 TodoList.propTypes = {
   completed: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onCheck: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired
 };

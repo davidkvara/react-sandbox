@@ -1,21 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function Input(props) {
+export default function Input({ onTodoSubmit, ...rest }) {
   return (
-    <div>
-      <input
-        type="text"
-        className="input"
-        placeholder="enter todo here"
-        {...props}
-      />
-    </div>
+    <form onSubmit={onTodoSubmit}>
+      <input className="input" placeholder="enter todo here" {...rest} />
+    </form>
   );
 }
 
 Input.propTypes = {
   onChange: PropTypes.func.isRequired,
-  onKeyPress: PropTypes.func.isRequired,
+  onTodoSubmit: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired
 };

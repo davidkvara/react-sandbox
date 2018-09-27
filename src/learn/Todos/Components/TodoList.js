@@ -1,31 +1,39 @@
-import React from "react";
+import React, { PureComponent, Fragment } from "react";
 import TodoItem from "./TodoItem";
 import TodoPanel from "./TodoPanel";
 
-function TodoList(props) {
-  if (props.todoLengths.originalTodos === 0) return "";
-  return (
-    <React.Fragment>
-      <ul>
-        {props.todos.map(todo => {
-          return (
-            <TodoItem
-              key={todo.id}
-              onCheck={() => props.onCheck(todo.id)}
-              onDelete={() => props.onDelete(todo.id)}
-              {...todo}
-            />
-          );
-        })}
-      </ul>
-      <TodoPanel
-        completed={props.todoLengths.activeTodos}
-        handleFilter={props.onFilterChange}
-        filterType={props.filter}
-        clearCompleted={props.handleClear}
-      />
-    </React.Fragment>
-  );
+class TodoList extends PureComponent {
+  render() {
+    const {
+      todos,
+      onCheck,
+      onDelete,
+      activeTodosLength,
+      onFilterChange,
+      handleClear
+    } = this.props;
+    return (
+      <Fragment>
+        <ul>
+          {todos.map(todo => {
+            return (
+              <TodoItem
+                key={todo.id}
+                onCheck={() => onCheck(todo.id)}
+                onDelete={() => onDelete(todo.id)}
+                {...todo}
+              />
+            );
+          })}
+        </ul>
+        <TodoPanel
+          completed={activeTodosLength}
+          handleFilter={onFilterChange}
+          clearCompleted={handleClear}
+        />
+      </Fragment>
+    );
+  }
 }
 
 export default TodoList;
