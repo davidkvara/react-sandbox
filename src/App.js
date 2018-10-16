@@ -1,8 +1,9 @@
 import React from "react";
+import s from "./app.module.css";
 
-export default () => <h1 style={title}>React Sandbox</h1>;
-
-const title = {
-  padding: "2rem 0.5rem 0.75rem",
-  margin: "0 2rem"
-};
+export default () => (
+  <h1 className={s.title}>
+    <span className={s.brckt}>{"<"}</span>
+    ReactSandbox <span className={s.brckt}>{"/>"}</span>
+  </h1>
+);
