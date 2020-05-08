@@ -1,5 +1,4 @@
 .demo {
-  width: 100%;
   max-width: 910px;
   margin: 0 auto;
   padding: 1rem;
@@ -47,7 +46,7 @@
   line-height: 1.5;
 }
 
-.article > p > span {
+.article span {
   font-weight: bold;
   color: slategrey;
   border-bottom: 1px solid rgb(147, 147, 160);
@@ -56,10 +55,10 @@
 @keyframes move-up {
   0% {
     opacity: 0;
-    transform: translate3d(0px, 0.5rem, 0px);
+    transform: translate3d(0, 0.5rem, 0);
   }
   100% {
     opacity: 1;
-    transform: translate3d(0px, 0px, 0px);
+    transform: translate3d(0, 0, 0);
   }
 }

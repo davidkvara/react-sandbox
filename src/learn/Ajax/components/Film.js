@@ -10,7 +10,7 @@ const Film = ({ title, release_date, director, rt_score, description }) => (
       <span>director:</span> {director}
     </p>
     <p>
-      <span>rotten tomattoes:</span> {rt_score}
+      <span>rotten tomattoes:</span> {rt_score}%
     </p>
     <p>
       <span>description:</span> {description}
