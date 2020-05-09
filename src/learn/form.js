@@ -1,25 +1,41 @@
 import React, { useState } from "react";
 
 export default () => {
-  const [{ username, pwd }, setValue] = useState({ username: "", pwd: "" });
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-
-    setValue(state => {
-      return { ...state, [name]: value };
-    });
-  };
+  const [values, handleChange] = useForm({ username: "", pwd: "", email: "" });
 
   return (
     <>
       <p>
-        <input name="username" value={username} onChange={handleChange} />
-        <span>{username}</span>
+        <input
+          name="username"
+          value={values.username}
+          onChange={handleChange}
+        />
+        <span>{values.username}</span>
       </p>
       <p>
-        <input name="pwd" value={pwd} onChange={handleChange} type="password" />
+        <input name="email" value={values.email} onChange={handleChange} />
+        <span>{values.email}</span>
+      </p>
+      <p>
+        <input
+          name="pwd"
+          value={values.pwd}
+          onChange={handleChange}
+          type="password"
+        />
       </p>
     </>
   );
+};
+
+const useForm = obj => {
+  const [state, setState] = useState(obj);
+
+  return [
+    state,
+    e => {
+      setState({ ...state, [e.target.name]: e.target.value });
+    }
+  ];
 };
