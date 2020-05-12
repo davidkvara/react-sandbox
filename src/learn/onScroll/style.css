@@ -7,14 +7,13 @@
   background: #fff;
   transition: 0.2s ease-in-out;
   border-bottom: 1px solid rgba(0, 0, 0, 0.0975);
-  color: #262626;
   z-index: 1;
 }
 
 .main {
   min-height: 2000px;
   padding-top: 100px;
-  background: #fafafa;
+  background: #f7f7f7;
 }
 
 .footer {
@@ -30,14 +29,14 @@
 
 .sign {
   position: absolute;
-  bottom: 50px;
+  bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 20px;
+  font-weight: 300;
+  font-size: 1.8rem;
   pointer-events: none;
-  color: midnightblue;
-  letter-spacing: 1px;
-  animation: cim-cim 1.5s infinite;
+  letter-spacing: 2px;
+  animation: cim-cim 2s infinite;
 }
 
 @keyframes cim-cim {
