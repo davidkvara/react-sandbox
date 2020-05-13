@@ -1,0 +1,23 @@
+.mt {
+  margin-top: 2rem;
+}
+
+.input {
+  min-width: 280px;
+  border: 1px solid #c9c9c9;
+  padding: 8px 10px;
+  font: inherit;
+  border-radius: 3px;
+}
+
+ul {
+  padding: 0;
+  display: grid;
+}
+
+li {
+  list-style: none;
+  margin: 0.25rem 0;
+  padding: 0.25rem 0;
+  user-select: none;
+}

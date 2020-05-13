@@ -1,73 +1,72 @@
-import React, { Component } from "react";
-import TodosApp from "./App";
+import React, { useReducer } from "react";
+import "./some.css";
+import { TodosInput, TodosList } from "./components";
+import { todosReducer } from "./reducers";
 
-class Todo extends Component {
-  state = { todos: [], input: "", filter_type: "SHOW_ALL" };
+const initialState = {
+  todos: [],
+  input: "",
+  filter_type: "SHOW_ALL"
+};
 
-  handleChange = e => {
-    this.setState({ input: e.target.value });
+const Todo = () => {
+  const [state, dispatch] = useReducer(todosReducer, initialState);
+  const { todos, input, filter_type } = state;
+
+  const handleChange = e => {
+    dispatch({ type: "inputChange", value: e.target.value });
   };
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    if (this.state.input.length < 1) return;
-
-    const newTodoItem = {
-      id: Date.now(),
-      text: this.state.input,
-      completed: false
-    };
-    this.setState({ todos: this.state.todos.concat(newTodoItem), input: "" });
+    if (input.trim().length < 1) return;
+    dispatch({ type: "addTodo" });
   };
 
-  handleToggleCheck = id => {
-    const todos = this.state.todos.map(
-      todo => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)
-    );
-    this.setState({ todos });
+  const handleToggleCheck = id => {
+    dispatch({ type: "toggleTodo", id });
   };
 
-  handleRemove = id => {
-    const todos = this.state.todos.filter(todo => todo.id !== id);
-    this.setState({ todos });
+  const handleRemove = id => {
+    dispatch({ type: "removeTodo", id });
   };
 
-  renderFilterButton(filterType, label) {
-    return <button onClick={() => this.setFilter(filterType)}>{label}</button>;
-  }
-
-  setFilter = filter => {
-    this.setState({ filter_type: filter });
+  const handleClear = () => {
+    dispatch({ type: "clearTodos" });
   };
 
-  hnadleClear = () => {
-    const todos = this.state.todos.filter(todo => !todo.completed);
-
-    this.setState({ todos });
+  const setFilter = filter => {
+    dispatch({ type: "setFilter", filter });
   };
 
-  render() {
-    const theTODOS = filteredTODOS(this.state.todos, this.state.filter_type);
+  const renderFilterButton = (filterType, label) => {
+    // returns filter buttons
+    return <button onClick={() => setFilter(filterType)}>{label}</button>;
+  };
 
-    return (
-      <div className="container">
-        <TodosApp
-          todos={theTODOS}
-          input={this.state.input}
-          onInputChange={this.handleChange}
-          onSubmit={this.handleSubmit}
-          onCheckboxChange={this.handleToggleCheck}
-          onRemoveTodo={this.handleRemove}
-          onClear={this.handleClear}
-        />
-        {this.renderFilterButton("SHOW_ALL", "all")}
-        {this.renderFilterButton("SHOW_ACTIVE", "active")}
-        {this.renderFilterButton("SHOW_COMPLETED", "completed")}
-        <button onClick={this.hnadleClear}>clear completed</button>
-      </div>
-    );
-  }
-}
+  const theTODOS = filteredTODOS(todos, filter_type);
+
+  return (
+    <div className="container mt">
+      <TodosInput
+        input={input}
+        onInputChange={handleChange}
+        onSubmit={handleSubmit}
+      />
+      <TodosList
+        todos={theTODOS}
+        onCheckboxChange={handleToggleCheck}
+        onRemoveTodo={handleRemove}
+      />
+      {/* filter buttons */}
+      {renderFilterButton("SHOW_ALL", "all")}
+      {renderFilterButton("SHOW_ACTIVE", "active")}
+      {renderFilterButton("SHOW_COMPLETED", "completed")}
+      <button onClick={handleClear}>clear completed</button>
+      {/* filter buttons */}
+    </div>
+  );
+};
 
 function filteredTODOS(todos, filterType) {
   if (filterType === "SHOW_COMPLETED") {
