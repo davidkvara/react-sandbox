@@ -1,96 +1,86 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import "./style.css";
 import HeroesContainer from "./components/HeroesContainer";
 import HeroEditor from "./components/HeroEditor";
-import "./style.css";
 
-class Heroes extends Component {
-  state = {
-    heroes: [{ name: "AI bot", saying: "y'all stupid lol", id: 13 }],
-    editingMode: false,
-    hint: "",
-    selectedHero: null
-  };
+const Heroes = () => {
+  const [heroes, setHeroes] = useState([]);
+  const [editingMode, setEditingMode] = useState(false);
+  const [hint, setHint] = useState("");
+  const [selectedHero, setSelectedHero] = useState(null);
 
-  heroDelete = (e, heroID) => {
+  const heroDelete = (e, heroID) => {
     e.stopPropagation();
-    const heroes = this.state.heroes.filter(hero => hero.id !== heroID);
-    this.setState({ heroes, selectedHero: null });
+    const newHeroes = heroes.filter(hero => hero.id !== heroID);
+    setHeroes(newHeroes);
+    setSelectedHero(null);
   };
 
-  handleEdit = hero => {
-    this.setState({ editingMode: true, selectedHero: hero });
+  const handleEdit = hero => {
+    setEditingMode(true);
+    setSelectedHero(hero);
   };
 
-  addHero = hero => {
-    this.setState({
-      selectedHero: { id: "", name: "", saying: "" },
-      editingMode: false
-    });
+  const addHero = () => {
+    setEditingMode(false);
+    setSelectedHero({ id: Date.now(), name: "", saying: "" });
   };
 
-  saveHero = () => {
-    const newHero = { ...this.state.selectedHero };
-    if (newHero.id && newHero.name && newHero.saying) {
-      const idExists = this.state.heroes.findIndex(
-        hero => hero.id === Number(newHero.id)
+  const saveHero = () => {
+    if (selectedHero.name && selectedHero.saying) {
+      const idExists = heroes.findIndex(
+        hero => hero.id === Number(selectedHero.id)
       );
       if (idExists > -1) {
-        const editedHeros = this.state.heroes.map(
-          hero =>
-            hero.id === Number(newHero.id)
-              ? { ...newHero, id: Number(newHero.id) }
-              : hero
+        const editedHeros = heroes.map(hero =>
+          hero.id === Number(selectedHero.id)
+            ? { ...selectedHero, id: Number(selectedHero.id) }
+            : hero
         );
-        this.setState({ heroes: editedHeros, selectedHero: null, hint: "" });
+        setHeroes(editedHeros);
       } else {
-        newHero.id = Number(newHero.id);
-        this.setState({
-          heroes: [...this.state.heroes, newHero],
-          selectedHero: null,
-          hint: ""
-        });
+        setHeroes(heroes.concat(selectedHero));
       }
+      setSelectedHero(null);
+      setHint("");
     } else {
-      this.setState({ hint: "don't leave an empty input!!" });
+      setHint("don't leave an empty input!!");
     }
   };
 
-  handleCancel = () => {
-    this.setState({ selectedHero: null, editingMode: false, hint: "" });
+  const handleCancel = () => {
+    setSelectedHero(null);
+    setEditingMode(false);
+    setHint("");
   };
 
-  handleChange = e => {
+  const handleChange = e => {
     const { name, value } = e.target;
-    this.setState(prevState => {
-      let selectedHero = { ...prevState.selectedHero };
-      selectedHero[name] = value;
-      return { selectedHero };
+
+    setSelectedHero(state => {
+      return { ...state, [name]: value };
     });
   };
 
-  render() {
-    const { heroes, selectedHero, editingMode, hint } = this.state;
-
-    return (
-      <div className="container">
-        <h2>We can be heroes, just for one day</h2>
-        <button onClick={this.addHero}>add new Hero</button>
-        <HeroesContainer
-          heroes={heroes}
-          onClick={this.handleEdit}
-          onDelete={this.heroDelete}
-        />
-        <HeroEditor
-          selectedHero={selectedHero}
-          editingMode={editingMode}
-          onSave={this.saveHero}
-          onCancel={this.handleCancel}
-          onChange={this.handleChange}
-          hint={hint}
-        />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="container">
+      <h2>We can be heroes, just for one day</h2>
+      <button onClick={addHero}>add new Hero</button>
+      <HeroesContainer
+        heroes={heroes}
+        onClick={handleEdit}
+        onDelete={heroDelete}
+      />
+      <HeroEditor
+        selectedHero={selectedHero}
+        editingMode={editingMode}
+        onSave={saveHero}
+        onCancel={handleCancel}
+        onChange={handleChange}
+        hint={hint}
+      />
+    </div>
+  );
+};
 
 export default Heroes;
