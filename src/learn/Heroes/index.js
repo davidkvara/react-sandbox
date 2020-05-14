@@ -1,65 +1,69 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 import "./style.css";
 import HeroesContainer from "./components/HeroesContainer";
 import HeroEditor from "./components/HeroEditor";
+import { heroesReducer } from "./reducers";
+
+const initialState = {
+  heroes: [],
+  editingMode: false,
+  hint: "",
+  selectedHero: null
+};
 
 const Heroes = () => {
-  const [heroes, setHeroes] = useState([]);
-  const [editingMode, setEditingMode] = useState(false);
-  const [hint, setHint] = useState("");
-  const [selectedHero, setSelectedHero] = useState(null);
+  const [state, dispatch] = useReducer(heroesReducer, initialState);
+  const { heroes, selectedHero, hint, editingMode } = state;
+  const thisEl = React.useRef();
 
   const heroDelete = (e, heroID) => {
     e.stopPropagation();
-    const newHeroes = heroes.filter(hero => hero.id !== heroID);
-    setHeroes(newHeroes);
-    setSelectedHero(null);
+    dispatch({ type: "deleteHero", heroID });
   };
 
   const handleEdit = hero => {
-    setEditingMode(true);
-    setSelectedHero(hero);
+    dispatch({ type: "editHero", hero });
   };
 
-  const addHero = () => {
-    setEditingMode(false);
-    setSelectedHero({ id: Date.now(), name: "", saying: "" });
+  const addHero = e => {
+    e.preventDefault();
+    dispatch({
+      type: "addHero",
+      hero: { id: Date.now(), name: "", saying: "" }
+    });
+    // ???
+    setTimeout(() => {
+      thisEl.current.focus();
+    }, 100);
   };
 
-  const saveHero = () => {
-    if (selectedHero.name && selectedHero.saying) {
-      const idExists = heroes.findIndex(
-        hero => hero.id === Number(selectedHero.id)
+  const saveHero = e => {
+    e.preventDefault();
+    if (!selectedHero.name || !selectedHero.saying) {
+      dispatch({ type: "displayHint" });
+      return;
+    }
+    if (editingMode) {
+      // გასაუმჯობესებელია აიდის მინიჭების პროცესი
+      const editedHeros = heroes.map(hero =>
+        hero.id === selectedHero.id
+          ? { ...selectedHero, id: selectedHero.id }
+          : hero
       );
-      if (idExists > -1) {
-        const editedHeros = heroes.map(hero =>
-          hero.id === Number(selectedHero.id)
-            ? { ...selectedHero, id: Number(selectedHero.id) }
-            : hero
-        );
-        setHeroes(editedHeros);
-      } else {
-        setHeroes(heroes.concat(selectedHero));
-      }
-      setSelectedHero(null);
-      setHint("");
+      dispatch({ type: "saveEditedHero", editedHeros });
     } else {
-      setHint("don't leave an empty input!!");
+      dispatch({ type: "saveNewHero" });
     }
   };
 
-  const handleCancel = () => {
-    setSelectedHero(null);
-    setEditingMode(false);
-    setHint("");
+  const handleCancel = e => {
+    e.preventDefault();
+    dispatch({ type: "cancelAddHero" });
   };
 
   const handleChange = e => {
     const { name, value } = e.target;
-
-    setSelectedHero(state => {
-      return { ...state, [name]: value };
-    });
+    dispatch({ type: "handleChange", name, value });
   };
 
   return (
@@ -78,6 +82,7 @@ const Heroes = () => {
         onCancel={handleCancel}
         onChange={handleChange}
         hint={hint}
+        myRef={thisEl}
       />
     </div>
   );
