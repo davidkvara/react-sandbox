@@ -1,8 +1,8 @@
 import React from "react";
-import "./css/initial.css";
+import styled, { keyframes } from "styled-components";
 
 const App = () => (
-  <div className="container">
+  <Container>
     <h2>Maiores inventore ullam blanditiis aliquid distinctio reiciendis</h2>
     <p>
       Odio culpa tempore delectus id error voluptatem doloremque pariatur
@@ -31,7 +31,26 @@ const App = () => (
       Doloribus iste iure maiores dolor accusantium magni praesentium itaque ad
       beatae earum? Soluta maiores accusantium quod sapiente facere delectus!
     </p>
-  </div>
+  </Container>
 );
+
+const fadeInBottom = keyframes`
+  from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+`;
+
+const Container = styled.div`
+  max-width: 900px;
+  margin: 0 auto;
+  transform: translateY(16px) scale(0.99);
+  transform-origin: 50% 0;
+  opacity: 0;
+  animation: ${fadeInBottom} 0.3s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+`;
 
 export default App;

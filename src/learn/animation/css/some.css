@@ -51,23 +51,35 @@
   outline: 3px solid gold;
 }
 
-.list-enter {
+.item-enter {
   opacity: 0.01;
   transform: translateY(22px);
 }
 
-.list-enter.list-enter-active {
+.item-enter-active {
   opacity: 1;
   transition: 300ms ease-out;
   transform: translateY(0);
 }
 
-.list-leave {
+/* .item-exit {
   opacity: 1;
+} */
+
+.item-exit.item-exit-active {
+  opacity: 0.01;
+  transition: 300ms ease-out;
+  transform: translateX(24px);
 }
 
-.list-leave.list-leave-active {
-  opacity: 0.01;
-  transition: 200ms ease-out;
-  transform: translateX(14px);
+.my-btn {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  display: block;
+}
+
+.my-btn:focus {
+  outline: 3px solid gold;
 }

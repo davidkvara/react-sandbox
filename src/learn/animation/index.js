@@ -1,42 +1,41 @@
-import React from "react";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import React, { useState } from "react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "./css/some.css";
 
-export default class TodoList extends React.Component {
-  state = {
-    items: [{ name: "Hello", id: 45 }, { name: "Universe", id: 22 }],
-    value: ""
+export default () => {
+  const [items, setItems] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+
+  const handleRemove = id => {
+    const newItems = items.filter(item => item.id !== id);
+    setItems(newItems);
   };
 
-  handleAdd = e => {
+  const handleAdd = e => {
     e.preventDefault();
+    if (inputValue.trim().length < 1) return;
+
     const newItem = {
-      name: this.state.value,
+      name: inputValue,
       id: Date.now()
     };
-    this.setState({ items: [...this.state.items, newItem], value: "" });
+    setItems(items.concat(newItem));
+    setInputValue("");
   };
 
-  handleRemove = id => {
-    const items = this.state.items.filter(item => item.id !== id);
-    this.setState({ items });
-  };
-
-  render() {
-    return (
-      <div className="wrapper">
-        <h2>List of things</h2>
-        <Input
-          onSubmit={this.handleAdd}
-          value={this.state.value}
-          placeholder="add item"
-          onChange={e => this.setState({ value: e.target.value })}
-        />
-        <ListItems items={this.state.items} handleRemove={this.handleRemove} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className="wrapper">
+      <h2>List of things</h2>
+      <Input
+        onSubmit={handleAdd}
+        value={inputValue}
+        placeholder="add item"
+        onChange={e => setInputValue(e.target.value)}
+      />
+      <ListItems items={items} handleRemove={handleRemove} />
+    </div>
+  );
+};
 
 const Input = ({ onSubmit, ...rest }) => (
   <form onSubmit={onSubmit}>
@@ -44,27 +43,16 @@ const Input = ({ onSubmit, ...rest }) => (
   </form>
 );
 
-class ListItems extends React.PureComponent {
-  render() {
-    const todos = this.props.items.map(item => (
-      <li
-        key={item.id}
-        className="item"
-        onClick={() => this.props.handleRemove(item.id)}
-      >
-        {item.name}
-      </li>
-    ));
-    return (
-      <ReactCSSTransitionGroup
-        component="ul"
-        className="list"
-        transitionName="list"
-        transitionEnterTimeout={500}
-        transitionLeaveTimeout={300}
-      >
-        {todos}
-      </ReactCSSTransitionGroup>
-    );
-  }
-}
+const ListItems = props => {
+  return (
+    <TransitionGroup component="ul" className="list">
+      {props.items.map(item => (
+        <CSSTransition key={item.id} timeout={300} classNames="item">
+          <li className="item" onClick={() => props.handleRemove(item.id)}>
+            <button className="my-btn">{item.name}</button>
+          </li>
+        </CSSTransition>
+      ))}
+    </TransitionGroup>
+  );
+};

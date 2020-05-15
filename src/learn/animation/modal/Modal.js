@@ -22,7 +22,7 @@ const Overlay = styled.div`
   position: absolute;
   left: 0;
   top: 0;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;

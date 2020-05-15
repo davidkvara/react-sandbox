@@ -1,24 +1,20 @@
-/* modal starts here */
-
 .modal-enter {
   opacity: 0.01;
 }
-
-.modal-enter.modal-enter-active {
+.modal-enter-active {
   opacity: 1;
-  transition: 0.4s;
+  transition: opacity 400ms;
 }
-
-.modal-leave {
+.modal-exit {
   opacity: 1;
 }
-
-.modal-leave.modal-leave-active {
+.modal-exit-active {
   opacity: 0.01;
-  transition: opacity 0.2s;
+  transition: opacity 200ms;
 }
 
 .message {
+  box-sizing: border-box;
   width: 100%;
   max-width: 600px;
   background: #fff;
@@ -34,14 +30,14 @@
 .modal-enter .message {
   transform: translate(0, 40px);
 }
-.modal-enter.modal-enter-active .message {
-  transform: translate(0, 0px);
+.modal-enter-active .message {
+  transform: translate(0, 0);
 }
 
-.modal-leave .message {
-  transform: translate(0, 0px);
+.modal-exit .message {
+  transform: translate(0, 0);
 }
 
-.modal-leave.modal-leave-active .message {
+.modal-exit-active .message {
   transform: translate(0, 40px);
 }
