@@ -6,12 +6,13 @@ function App() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    fetch("https://randomuser.me/api/?results=20")
+    fetch("https://randomuser.me/api/?results=10")
       .then(res => res.json())
       .then(
         result => {
           setIsLoaded(true);
-          setItems(result.results);
+          const { results } = result;
+          setItems(results);
         },
         error => {
           setIsLoaded(true);

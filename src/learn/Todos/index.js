@@ -1,6 +1,6 @@
 import React from "react";
 import "./todo.css";
-import uuidv1 from "uuid";
+import { v4 as uuidv4 } from "uuid";
 import Input from "./components/Input";
 import TodoList from "./components/TodoList";
 
@@ -23,7 +23,7 @@ class Todo extends React.Component {
     e.preventDefault();
     if (!this.state.value.trim()) return;
 
-    const id = uuidv1();
+    const id = uuidv4();
     const newTodo = { text: this.state.value, completed: false, id };
     this.setState({
       todos: [...this.state.todos, newTodo],
@@ -32,9 +32,8 @@ class Todo extends React.Component {
   };
 
   handleToggleCheck = todoID => {
-    const todos = this.state.todos.map(
-      todo =>
-        todo.id === todoID ? { ...todo, completed: !todo.completed } : todo
+    const todos = this.state.todos.map(todo =>
+      todo.id === todoID ? { ...todo, completed: !todo.completed } : todo
     );
     this.setState({ todos });
   };
