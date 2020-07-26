@@ -4,14 +4,11 @@ export function todosReducer(state, action) {
       return {
         ...state,
         todos: state.todos.concat({
-          text: state.input,
+          text: action.value,
           id: Date.now(),
           completed: false
-        }),
-        input: ""
+        })
       };
-    case "inputChange":
-      return { ...state, input: action.value };
     case "toggleTodo":
       return {
         ...state,
