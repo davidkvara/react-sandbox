@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function TodoList({ onCheck, completed, text, onDelete }) {
+export default function TodoList({ onCheck, completed, text, id, onDelete }) {
   return (
     <li className="todo-item">
       <label>

@@ -1,9 +1,10 @@
-import React, { PureComponent, Fragment } from "react";
+import React from "react";
 import TodoItem from "./TodoItem";
 import TodoPanel from "./TodoPanel";
 
-class TodoList extends PureComponent {
+class TodoList extends React.Component {
   render() {
+    // console.log("list rendered");
     const {
       todos,
       onCheck,
@@ -13,7 +14,7 @@ class TodoList extends PureComponent {
       handleClear
     } = this.props;
     return (
-      <Fragment>
+      <>
         <ul>
           {todos.map(todo => {
             return (
@@ -31,7 +32,7 @@ class TodoList extends PureComponent {
           handleFilter={onFilterChange}
           clearCompleted={handleClear}
         />
-      </Fragment>
+      </>
     );
   }
 }

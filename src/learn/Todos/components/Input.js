@@ -1,16 +1,33 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function Input({ onTodoSubmit, ...rest }) {
-  return (
-    <form onSubmit={onTodoSubmit}>
-      <input className="input" placeholder="enter todo here" {...rest} />
-    </form>
-  );
+export default class Input extends React.Component {
+  state = { value: "" };
+
+  handleChange = e => {
+    this.setState({ value: e.target.value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.onSubmit(this.state.value);
+    this.setState({ value: "" });
+  };
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <input
+          value={this.state.value}
+          onChange={this.handleChange}
+          className="input"
+          placeholder="enter todo here"
+        />
+      </form>
+    );
+  }
 }
 
 Input.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  onTodoSubmit: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
+  onSubmit: PropTypes.func.isRequired
 };

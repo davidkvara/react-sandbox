@@ -6,7 +6,6 @@ import TodoList from "./components/TodoList";
 
 class Todo extends React.Component {
   state = {
-    value: "",
     todos: [
       { text: "sleep tight", completed: true, id: "a" },
       { text: "write code", completed: false, id: "b" },
@@ -15,19 +14,13 @@ class Todo extends React.Component {
     visibility_filter: "SHOW_ALL"
   };
 
-  handleChange = e => {
-    this.setState({ value: e.target.value });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    if (!this.state.value.trim()) return;
+  handleSubmit = value => {
+    if (!value.trim()) return;
 
     const id = uuidv4();
-    const newTodo = { text: this.state.value, completed: false, id };
+    const newTodo = { text: value, completed: false, id };
     this.setState({
-      todos: [...this.state.todos, newTodo],
-      value: ""
+      todos: [...this.state.todos, newTodo]
     });
   };
 
@@ -61,11 +54,7 @@ class Todo extends React.Component {
     return (
       <div className="todo">
         <h1 className="td-title">todos</h1>
-        <Input
-          value={this.state.value}
-          onChange={this.handleChange}
-          onTodoSubmit={this.handleSubmit}
-        />
+        <Input onSubmit={this.handleSubmit} />
         {this.state.todos.length > 0 && (
           <TodoList
             todos={todos}
